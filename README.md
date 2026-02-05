@@ -27,7 +27,7 @@ Python Requirements:
 
 Install dependencies:<br>
 ```bash
-pip install torch numpy pandas scikit-learn joblib tqdm matplotlib seaborn
+pip install torch numpy pandas scikit-learn joblib scipy os matplotlib seaborn
 ```
 
 ## Step-by-Step Pipeline
@@ -49,8 +49,8 @@ Configure the data and artifacts paths for training and evaluation：
 - 'CALIBRATOR_PATH': the path for Isotonic Regression calibrator. If the calibrator file exists, it will be loaded automatically. Otherwise, it will be fitted and saved during the validation stage.
 
 Each CSV file should contain:
--Feature columns (numeric, aligned to training features)
--Outcome columns prefixed with outcome_ or other type (binary labels)
+- Feature columns (numeric, aligned to training features)
+- Outcome columns prefixed with outcome_ or other type (binary labels)
 
 ### Step 2: Create Training Dataloaders
 Notebook section: Training Data Preparation
