@@ -1,0 +1,35 @@
+site_name: MultiDiseasePred
+site_description: Multi-task clinical outcome prediction framework with training, calibration, and external validation
+site_url: https://fengx13.github.io/MultiDiseasePred/
+repo_url: https://github.com/fengx13/MultiDiseasePred
+repo_name: MultiDiseasePred
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.integrate
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.details
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Data Paths & Outputs: data_paths.md
+  - Tutorial:
+      - Training Pipeline: tutorial/01_training.md
+      - Calibration: tutorial/02_calibration.md
+      - External Validation: tutorial/03_external_validation.md
+  - Demo: demo.md
