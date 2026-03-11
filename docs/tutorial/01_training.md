@@ -24,6 +24,8 @@ MultiDiseasePred_Train_Validation.ipynb
 
 Run cells **sequentially from top to bottom**.  
 
+---
+
 # 2. Configure Dataset Paths
 
 Before running the training cells, update the dataset paths defined near the beginning of the notebook.  
@@ -45,6 +47,8 @@ The training dataset will be used to:
 
 - generate model checkpoints
 
+---
+
 # 3. Load the Dataset
 
 The training CSV file is loaded into a pandas DataFrame.  
@@ -64,6 +68,9 @@ Example workflow:
 ```python
 df_train = pd.read_csv(UMN_TRAIN_CSV)
 ```
+
+---
+
 # 4. Define Feature and Outcome Columns
 
 The pipeline requires explicit definitions for:  
@@ -82,6 +89,7 @@ Outcome columns should follow the naming pattern:
 ```bash
 outcome_*
 ```
+---
 
 # 5. Align Feature Columns
 
@@ -94,6 +102,8 @@ ensure_feature_columns(df, required_cols)
 ```
 
 This prevents shape mismatches during training and evaluation.  
+
+---
 
 # 6. Feature Preprocessing
 
@@ -127,6 +137,8 @@ joblib.dump(
 )
 ```
 
+---
+
 # 7. Create PyTorch Dataloaders
 
 After preprocessing, the dataset is converted to PyTorch tensors.  
@@ -139,6 +151,7 @@ Each batch contains:
 
 - label tensor ```(batch_size, num_tasks)```
 
+---
 
 # 8. Initialize the Model
 
@@ -162,6 +175,8 @@ The model produces **task-specific logits**:
 logits: (batch_size, num_tasks)
 ```
 Each column corresponds to a predicted task.  
+
+---
 
 # 9. Train the Model
 
@@ -206,6 +221,8 @@ This function handles:
 
 The loss function is typically ```BCEWithLogitsLoss``` which directly operates on logits.
 
+---
+
 # 10. Monitor Validation Performance
 
 During training, validation metrics are tracked to identify the best model checkpoint.  
@@ -219,6 +236,8 @@ Typical metrics include:
 - task-wise prediction performance  
 
 The model achieving the best validation performance is saved.  
+
+---
 
 # 11. Save the Best Model
 
@@ -236,6 +255,8 @@ This checkpoint will be reused for:
 
 - external validation
 
+---
+
 # 12. Training Output
 
 After completing the training pipeline, the following artifacts will be generated:  
@@ -245,6 +266,8 @@ output/
 ├── feature_scaler_umn.pkl
 ```
 These artifacts are required for downstream steps in the pipeline.
+
+---
 
 # 13. Next Step
 
