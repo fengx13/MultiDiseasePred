@@ -76,6 +76,8 @@ These datasets allow evaluation of model generalization across different clinica
 
 External datasets may not contain all training features. Missing columns must be restored before evaluation.  
 
+---
+
 # 2. Expected CSV Structure
 
 Each dataset should contain the following types of columns.  
@@ -129,6 +131,7 @@ Each outcome column should contain:
 0 = negative
 1 = positive
 ```
+---
 
 # 3. Output Directory
 
@@ -141,6 +144,8 @@ OUTPUT_DIR = "output/"
 ```
 
 If the directory does not exist, the notebook will create it automatically.  
+
+---
 
 # 4. Saved Artifacts
 
@@ -200,6 +205,8 @@ Calibration is fitted on validation outputs and then applied to:
 
 - external validation predictions
 
+---
+
 # 5. Feature Alignment
 
 External datasets may not contain all training features.  
@@ -218,6 +225,8 @@ This function:
 - restores the correct training feature order  
 
 This step is critical for preventing shape mismatches during evaluation.  
+
+---
 
 # 6. Important Consistency Rules
 
@@ -255,6 +264,8 @@ apply calibrator to probabilities
 ```
 Mixing scales may produce incorrect performance metrics.   
 
+---
+
 # 7. Typical Directory Layout
 
 A typical project structure may look like:  
@@ -278,6 +289,9 @@ MultiDiseasePred/
 │
 └── MultiDiseasePred_Train_Validation.ipynb
 ```
+
+---
+
 # 8. Summary
 
 Before running the pipeline, users should confirm:  
