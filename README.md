@@ -1,90 +1,240 @@
-# MultiDiseasePred: Multi-Task Emergency Outcome Prediction
+# MultiDiseasePred
 
-This repository provides an end-to-end implementation of MultiDiseasePred, a multi-task deep learning framework for predicting multiple acute clinical outcomes from emergency department (ED) data.
+MultiDiseasePred is a multi-task learning framework for clinical outcome prediction using structured tabular clinical data. The repository provides a reproducible pipeline for training and evaluating multi-task models on healthcare datasets, with support for probability calibration and external validation.
 
-The pipeline covers:
+The implementation is centered around a Jupyter notebook workflow that integrates model training, evaluation, and calibration within a single reproducible pipeline.
 
-- Data loading and preprocessing
+---
 
-- Multi-task model training
+## Overview
 
-- Isotonic calibration
+MultiDiseasePred predicts multiple clinical outcomes simultaneously using a shared representation learned from structured patient features. The framework is designed for clinical prediction tasks such as emergency department risk prediction and hospital outcome forecasting.
 
-- Reproducible internal/external validation evaluation
+The pipeline includes:
 
-All core functionality is demonstrated in a single executable notebook.
+- structured feature preprocessing
+- multi-task neural network training
+- validation-based model checkpoint selection
+- probability calibration using isotonic regression
+- external validation on independent datasets
+- task-wise performance evaluation
 
-## Environment Setup
-Python Requirements:
-- Python ≥ 3.9
-- PyTorch ≥ 1.12
-- NumPy, Pandas
-- scikit-learn
-- joblib
-- scipy
-- os
-- matplotlib/seaborn (optional, for plots)<br>
+The main pipeline is implemented in the notebook:  
+MultiDiseasePred_Train_Validation.ipynb  
 
-Install dependencies:<br>
+---
+
+## Pipeline Workflow
+
+The typical workflow for running the MultiDiseasePred pipeline is:
+
+data loading  
+↓  
+feature preprocessing  
+↓  
+model training  
+↓  
+checkpoint selection  
+↓  
+external dataset loading  
+↓  
+prediction logits generation  
+↓  
+probability calibration  
+↓  
+performance evaluation  
+
+
+Each stage of the workflow is documented in the repository documentation.
+
+---
+
+## Installation
+
+Clone the repository:
+
 ```bash
-pip install torch numpy pandas scikit-learn joblib scipy os matplotlib seaborn
+git clone https://github.com/fengx13/MultiDiseasePred.git
+cd MultiDiseasePred
 ```
 
-## Step-by-Step Pipeline
-Important: Run the notebook from top to bottom without skipping cells.
-### Step 1: Import Libraries & Load and Preprocess Data
-Notebook section: Libs Imports
-- Import PyTorch, NumPy, Pandas, sklearn, scipy
-- Set random seeds for reproducibility
-- Define device (CPU / GPU)
+Create a Python environment and install dependencies:  
 
-Notebook section: Data Loading<br>
-Configure the data and artifacts paths for training and evaluation：
-- 'UMN_TRAIN_CSV': the path for model training data csv.
-- 'UMN_TEST_CSV' : the path for internal validation data csv.
-- 'MIMIC_CSV'& 'STANFORD_CSV': the paths for external validation data csv.
-- 'OUTPUT_DIR': the path for saving output artifacts. If the directory does not exist, it will be created automatically.
-- 'MODEL_CKPT_PATH': the path for PyTorch model weights checkpoint. 
-- 'FEATURE_SCALER_PATH': the path for feature scaler. It should be fitted only on the training set.
-- 'CALIBRATOR_PATH': the path for Isotonic Regression calibrator. If the calibrator file exists, it will be loaded automatically. Otherwise, it will be fitted and saved during the validation stage.
+```bash
+pip install torch numpy pandas scikit-learn scipy joblib matplotlib jupyter
+```
 
-Each CSV file should contain:
-- Feature columns (numeric, aligned to training features)
-- Outcome columns prefixed with outcome_ or other type (binary labels)
+Launch Jupyter:  
 
-### Step 2: Create Training Dataloaders
-Notebook section: Training Data Preparation
-- Define feature and outcome lists through 'col_list' and 'outcome_list'.
-- Convert NumPy arrays to tensors and build DataLoader objects for training and validation.
-- 'df = pd.read_csv(str(UMN_TRAIN_CSV))': load your training csv file by changing UMN_TRAIN_CSV.
-- 'joblib.dump(..., str(FEATURE_SCALER_PATH))' : the fitted standard scaler was saved in FEATURE_SCALER_PATH.
-- Each batch yields: X_batch (batch_size, num_features), y_batch (batch_size, num_tasks)
+```bash
+jupyter notebook
+```
 
-### Step 3: Train the Model
-Notebook section: Model Parameters Setup & Training Loop
-- Define model hyperparameters, optimizer, loss function, schduler and number of epoch
-- 'save_path = str(MODEL_CKPT_PATH)': define the path to save model checkpoint via MODEL_CKPT_PATH
-- Model output: logits (batch, num_tasks).
+Then open: '''MultiDiseasePred_Train_Validation.ipynb```
 
-### Step 4: Create Exteranl Validation Dataloaders & Fit Isotonic Calibrator
-Notebook section: External dataset generation & Generarte Calibrator
-- 'df_external = pd.read_csv(str(MIMIC_CSV))' : load the external/internal test data csv via MIMIC_CSV or other strings mentioned in Step 1.
-- 'ext_val_df' should be used to fit isotonic calibrator. It contains 20% of test data. (Change the spilt ratio via 'val_frac')
-- 'ext_test_df' is the final test set used for external validation
-- 'calibrator_path = str(CALIBRATOR_PATH)' : save and load the fitted calibrator via CALIBRATOR_PATH. It will automatically created the calibrator pkl file.
+Run all cells sequentially to execute the full pipeline.  
 
-### Step 5: Apply Calibration to Test set & Evaluation with Confidence Intervals
-Notebook section: Apply isotonic calibration & Final Evaluation
-- 'calibrator_path = str(CALIBRATOR_PATH)': load saved calibrator pkl file.
-- 'test_logits' & 'test_targets': raw logits and ground-truth labels collected.
-- 'test_probs' : the output probabilities after calibration.
+---
 
-Final evaluation metrics for each task:
-- AUROC + 95% CI (bootstrap)
-- AUPRC + 95% CI
-- Normalized PRC (nPRC)
-- Sensitivity / Specificity (Youden J)
-- Optimal threshold
-Macro-level metrics: Macro AUROC & Macro AUPRC
+# Dataset Configuration
 
+Before running the notebook, update dataset paths in the configuration section.   
 
+Example configuration:  
+
+```python
+UMN_TRAIN_CSV = "data/umn/train.csv"
+UMN_TEST_CSV  = "data/umn/test.csv"
+
+MIMIC_CSV     = "data/master_dataset.csv"
+STANFORD_CSV  = "data/stanford/stanford_features_labels.csv"
+```
+
+Each dataset should include:  
+
+- feature columns used during training  
+
+- outcome label columns (prefixed with ```outcome_```)  
+
+- an identifier column for group-based splitting  
+
+Example outcome labels:  
+
+```bash
+outcome_hospitalization
+outcome_critical
+outcome_sepsis
+outcome_aki
+outcome_pe
+```
+
+---
+
+# Output Artifacts
+
+The pipeline saves trained models and preprocessing artifacts to the configured output directory.  
+
+Example configuration:  
+
+'''python
+OUTPUT_DIR = "output/"
+
+MODEL_CKPT_PATH     = OUTPUT_DIR + "best_multidiseasepred.pt"
+FEATURE_SCALER_PATH = OUTPUT_DIR + "feature_scaler_umn.pkl"
+CALIBRATOR_PATH     = OUTPUT_DIR + "calibrator_isotonic.pkl"
+```
+After running the notebook, the following files are typically generated:
+
+```bash
+output/
+├── best_multidiseasepred.pt
+├── feature_scaler_umn.pkl
+└── calibrator_isotonic.pkl
+```
+
+These artifacts allow the trained model to be reused for future evaluation and deployment.  
+
+---
+
+# External Validation
+
+The repository supports evaluation on external datasets such as MIMIC or other hospital cohorts.  
+
+External validation involves:  
+
+1. loading the external dataset  
+
+2. aligning feature columns with the training schema  
+
+3. applying the saved preprocessing scaler  
+
+4. generating prediction logits using the trained model  
+
+5. fitting a calibration model  
+
+6. converting logits to calibrated probabilities  
+
+7. computing evaluation metrics  
+
+Typical evaluation metrics include:  
+
+- AUROC  
+
+- AUPRC  
+
+- normalized PRC  
+
+- sensitivity  
+
+- specificity  
+
+- bootstrap confidence intervals
+
+---
+
+# Documentation
+
+Detailed documentation for the full pipeline is available at:
+```bash
+https://fengx13.github.io/MultiDiseasePred/
+```
+
+The documentation includes:  
+
+- installation instructions  
+
+- dataset configuration  
+
+- training tutorial  
+
+- calibration workflow  
+
+- external validation procedure  
+
+- demo instructions
+
+---
+
+# Repository Structure
+
+```bash
+MultiDiseasePred/
+│
+├── MultiDiseasePred_Train_Validation.ipynb
+├── docs/
+│   ├── index.md
+│   ├── installation.md
+│   ├── data_paths.md
+│   ├── demo.md
+│   └── tutorial/
+│       ├── 01_training.md
+│       ├── 02_calibration.md
+│       └── 03_external_validation.md
+│
+├── mkdocs.yml
+└── README.md
+```
+
+---
+
+# Notes
+
+This repository does not include clinical datasets. Users must provide their own datasets with the required feature and outcome columns.  
+
+To ensure reproducibility:  
+
+- maintain consistent feature ordering between training and evaluation  
+
+- reuse the saved feature scaler for all evaluation datasets  
+
+- ensure calibration uses the same score scale as the model outputs
+
+---
+
+# Citation
+
+If you use this repository in your research, please cite the corresponding work once the associated manuscript or preprint is available.  
+
+# License
+
+This project is intended for research and academic use.  
