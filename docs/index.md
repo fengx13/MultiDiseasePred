@@ -113,6 +113,8 @@ After running the notebook, the pipeline will produce:
 
 All artifacts are saved under the configured output directory.
 
+---
+
 ## Important Notes
 
 - This repository does not include **clinical datasets**.  
@@ -122,6 +124,8 @@ All artifacts are saved under the configured output directory.
 - Feature order must remain consistent between training and evaluation.  
 
 - The same scaler and calibrator must be reused for validation and external testing.
+
+---
 
 ## Citation
 If you use this repository in your research, please cite the corresponding MultiDiseasePred work.  
