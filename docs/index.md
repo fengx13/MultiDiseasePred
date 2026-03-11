@@ -26,10 +26,7 @@ This notebook includes the entire workflow:
 3. Multi-task model training
 4. Model checkpoint selection
 5. Calibration using validation data
-6. Internal evaluation
-7. External validation
-8. SHAP feature importance analysis
-9. Parsimonious model experiments
+6. External validation
 
 ---
 
@@ -106,8 +103,6 @@ After running the notebook, the pipeline will produce:
 - saved feature scaler  
 
 - task-wise isotonic calibrator  
-
-- internal validation metrics  
 
 - external validation metrics
 
