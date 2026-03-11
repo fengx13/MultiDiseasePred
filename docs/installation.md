@@ -16,6 +16,9 @@ First, clone the GitHub repository to your local machine.
 git clone https://github.com/fengx13/MultiDiseasePred.git
 cd MultiDiseasePred
 ```
+
+---
+
 ## 2. Create a Python Environment
 
 It is recommended to create a clean Python environment before installing dependencies.  
@@ -27,6 +30,8 @@ python -m venv .venv
 source .venv/bin/activate        # Linux / macOS
 # .venv\Scripts\activate         # Windows
 ```
+
+---
 
 ## 3. Install Required Packages
 
@@ -60,6 +65,7 @@ These libraries support:
 
 - notebook execution (Jupyter)  
 
+---
 
 ## 4. Launch Jupyter Notebook
 
