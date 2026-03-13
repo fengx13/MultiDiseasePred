@@ -70,7 +70,7 @@ Launch Jupyter:
 jupyter notebook
 ```
 
-Then open: '''MultiDiseasePred_Train_Validation.ipynb```
+Then open: ```MultiDiseasePred_Train_Validation.ipynb```
 
 Run all cells sequentially to execute the full pipeline.  
 
