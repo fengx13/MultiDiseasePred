@@ -116,7 +116,7 @@ The pipeline saves trained models and preprocessing artifacts to the configured 
 
 Example configuration:  
 
-'''python
+```python
 OUTPUT_DIR = "output/"
 
 MODEL_CKPT_PATH     = OUTPUT_DIR + "best_multidiseasepred.pt"
