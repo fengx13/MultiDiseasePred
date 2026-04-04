@@ -43,6 +43,8 @@ prediction logits generation
 probability calibration  
 ↓  
 performance evaluation  
+↓  
+parsimounious feature selection
 
 
 Each stage of the workflow is documented in the repository documentation.
