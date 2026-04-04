@@ -27,6 +27,7 @@ This notebook includes the entire workflow:
 4. Model checkpoint selection
 5. Calibration using validation data
 6. External validation
+7. Parsimonious feature selection
 
 ---
 
@@ -46,7 +47,9 @@ Isotonic calibration
 ↓  
 Internal test evaluation  
 ↓  
-External validation  
+External validation 
+↓ 
+Parsimonious feature selection
 
 
 Each step is explained in detail in the tutorial section of this documentation.
@@ -71,6 +74,9 @@ If you are new to the repository, follow this order:
 
 5. **External Validation**  
    Evaluate the trained model on external datasets such as MIMIC.
+
+6. **Parsimonious Feature Selection**
+   Improve interpretability and support reduced-feature experiments
    
 ---
 
@@ -105,6 +111,8 @@ After running the notebook, the pipeline will produce:
 - task-wise isotonic calibrator  
 
 - external validation metrics
+
+- global feature ranking table and parsimonious feature ranking plots
 
 All artifacts are saved under the configured output directory.
 
