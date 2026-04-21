@@ -8,6 +8,8 @@ The implementation is centered around a Jupyter notebook workflow that integrate
 
 ## Overview
 
+![Framework](https://github.com/fengx13/MultiDiseasePred/blob/main/framework_overview.png)
+
 MultiDiseasePred predicts multiple clinical outcomes simultaneously using a shared representation learned from structured patient features. The framework is designed for clinical prediction tasks such as emergency department risk prediction and hospital outcome forecasting.
 
 The pipeline includes:
@@ -47,7 +49,15 @@ performance evaluation
 parsimounious feature selection
 
 
-Each stage of the workflow is documented in the repository documentation.
+Each stage of the workflow is documented in detail in the repository tutorials, with step-by-step instructions and runnable examples provided for each module.
+
+Users can follow the tutorials in order to reproduce the full pipeline:
+
+- [Data loading and preprocessing](https://github.com/fengx13/MultiDiseasePred/blob/main/docs/data_paths.md)
+- [Model training](https://github.com/fengx13/MultiDiseasePred/blob/main/docs/tutorial/01_training.md)
+- [Calibration](https://github.com/fengx13/MultiDiseasePred/blob/main/docs/tutorial/02_calibration.md)  
+- [External validation](https://github.com/fengx13/MultiDiseasePred/blob/main/docs/tutorial/03_external_validation.md) 
+- [SHAP-based parsimonious feature selection](https://github.com/fengx13/MultiDiseasePred/blob/main/docs/tutorial/04_parsimonious_feature_selection.md) 
 
 ---
 
