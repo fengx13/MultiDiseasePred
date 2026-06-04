@@ -1,0 +1,1026 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Multi-task clinical outcome prediction framework with training, calibration, and external validation">
+      
+      
+      
+        <link rel="canonical" href="https://fengx13.github.io/MultiDiseasePred/data_paths/">
+      
+      
+        <link rel="prev" href="../installation/">
+      
+      
+        <link rel="next" href="../tutorial/01_training/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Data Paths & Outputs - MultiDiseasePred</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-paths-output-configuration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MultiDiseasePred" class="md-header__button md-logo" aria-label="MultiDiseasePred" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MultiDiseasePred
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data Paths & Outputs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fengx13/MultiDiseasePred" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MultiDiseasePred
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MultiDiseasePred" class="md-nav__button md-logo" aria-label="MultiDiseasePred" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MultiDiseasePred
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fengx13/MultiDiseasePred" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MultiDiseasePred
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Paths & Outputs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Paths & Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sample-data-notice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Data Notice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/01_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/02_calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calibration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial/03_external_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="data-paths-output-configuration">Data Paths &amp; Output Configuration<a class="headerlink" href="#data-paths-output-configuration" title="Permanent link">&para;</a></h1>
+<p>This page explains how to configure dataset paths and output artifact locations used in the <strong>MultiDiseasePred</strong> pipeline.</p>
+<p>All dataset and artifact paths are defined near the beginning of the main notebook:</p>
+<p>MultiDiseasePred_Train_Validation.ipynb</p>
+<p>Users should modify these paths according to their local environment before running the pipeline.</p>
+<h2 id="sample-data-notice">Sample Data Notice<a class="headerlink" href="#sample-data-notice" title="Permanent link">&para;</a></h2>
+<p>To facilitate reproducibility and allow users to run the full MultiDiseasePred pipeline without access to the original clinical datasets, this repository provides a synthetic sample dataset.</p>
+<p>The sample dataset was randomly generated from the original development dataset while preserving the overall statistical distributions of the variables. No real patient-level information is included.</p>
+<p>Key characteristics:</p>
+<ul>
+<li>Approximately 20% of the original dataset size</li>
+<li>Identical column names and table structure</li>
+<li>Similar feature distributions to the original dataset</li>
+<li>Suitable for demonstrating:</li>
+<li>data preprocessing</li>
+<li>model training</li>
+<li>external validation</li>
+<li>calibration</li>
+<li>parsimonious feature selection</li>
+</ul>
+<p>Unless otherwise noted, all datasets included in this GitHub repository are synthetic sample datasets generated for demonstration purposes.</p>
+<p>The synthetic sample dataset used throughout the tutorials can be found in:</p>
+<div class="highlight"><pre><span></span><code>data/sample_data.zip
+</code></pre></div>
+<hr />
+<h1 id="1-input-dataset-paths">1. Input Dataset Paths<a class="headerlink" href="#1-input-dataset-paths" title="Permanent link">&para;</a></h1>
+<p>The notebook expects CSV files containing feature columns and outcome labels.</p>
+<p>Example configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="n">UMN_TRAIN_CSV</span> <span class="o">=</span> <span class="s2">&quot;data/umn/train.csv&quot;</span>
+<span class="n">UMN_TEST_CSV</span>  <span class="o">=</span> <span class="s2">&quot;data/umn/test.csv&quot;</span>
+
+<span class="n">MIMIC_CSV</span>     <span class="o">=</span> <span class="s2">&quot;data/master_dataset.csv&quot;</span>
+<span class="n">STANFORD_CSV</span>  <span class="o">=</span> <span class="s2">&quot;data/stanford/stanford_features_labels.csv&quot;</span>
+</code></pre></div>
+<h2 id="11-training-dataset">1.1 Training Dataset<a class="headerlink" href="#11-training-dataset" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code><span class="n">UMN_TRAIN_CSV</span>
+</code></pre></div>
+This dataset is used to:  </p>
+<ul>
+<li>
+<p>train the MultiDiseasePred model  </p>
+</li>
+<li>
+<p>compute preprocessing statistics  </p>
+</li>
+<li>
+<p>fit the feature scaler  </p>
+</li>
+<li>
+<p>generate model checkpoints  </p>
+</li>
+</ul>
+<p>The training dataset should contain:  </p>
+<ul>
+<li>
+<p>all required feature columns  </p>
+</li>
+<li>
+<p>outcome label columns</p>
+</li>
+</ul>
+<h2 id="12-internal-test-dataset">1.2 Internal Test Dataset<a class="headerlink" href="#12-internal-test-dataset" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">UMN_TEST_CSV</span>
+</code></pre></div>
+<p>This dataset is used for:  </p>
+<ul>
+<li>
+<p>internal evaluation  </p>
+</li>
+<li>
+<p>applying the fitted calibration model  </p>
+</li>
+<li>
+<p>computing AUROC / AUPRC metrics  </p>
+</li>
+<li>
+<p>generating bootstrap confidence intervals  </p>
+</li>
+</ul>
+<h2 id="13-external-validation-datasets">1.3 External Validation Datasets<a class="headerlink" href="#13-external-validation-datasets" title="Permanent link">&para;</a></h2>
+<p>External datasets can be evaluated by updating the corresponding path.  </p>
+<p>Example datasets include:  </p>
+<div class="highlight"><pre><span></span><code><span class="n">MIMIC_CSV</span>
+<span class="n">STANFORD_CSV</span>
+</code></pre></div>
+<p>These datasets allow evaluation of model generalization across different clinical cohorts.  </p>
+<p>External datasets may not contain all training features. Missing columns must be restored before evaluation.  </p>
+<hr />
+<h1 id="2-expected-csv-structure">2. Expected CSV Structure<a class="headerlink" href="#2-expected-csv-structure" title="Permanent link">&para;</a></h1>
+<p>Each dataset should contain the following types of columns.  </p>
+<h2 id="21-feature-columns">2.1 Feature Columns<a class="headerlink" href="#21-feature-columns" title="Permanent link">&para;</a></h2>
+<p>Structured tabular variables such as:  </p>
+<ul>
+<li>
+<p>demographics  </p>
+</li>
+<li>
+<p>triage vital signs  </p>
+</li>
+<li>
+<p>comorbidity indicators  </p>
+</li>
+<li>
+<p>utilization history  </p>
+</li>
+<li>
+<p>other engineered features  </p>
+</li>
+</ul>
+<p>Example feature names:  </p>
+<div class="highlight"><pre><span></span><code>age
+triage_heartrate
+triage_resprate
+triage_temperature
+triage_o2sat
+cci_score
+n_ed_90d
+</code></pre></div>
+<p>The following statistics were calculated from the provided synthetic sample dataset (<code>sample_data_train.csv</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Mean</th>
+<th>Std</th>
+<th>Min</th>
+<th>Max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>age</td>
+<td>52.85</td>
+<td>20.59</td>
+<td>18</td>
+<td>101</td>
+</tr>
+<tr>
+<td>triage_temperature</td>
+<td>36.71</td>
+<td>0.53</td>
+<td>26.00</td>
+<td>43.44</td>
+</tr>
+<tr>
+<td>triage_heartrate</td>
+<td>85.06</td>
+<td>17.38</td>
+<td>10.18</td>
+<td>255.99</td>
+</tr>
+<tr>
+<td>triage_resprate</td>
+<td>17.57</td>
+<td>2.43</td>
+<td>1</td>
+<td>189</td>
+</tr>
+<tr>
+<td>triage_o2sat</td>
+<td>98.40</td>
+<td>2.41</td>
+<td>0</td>
+<td>100</td>
+</tr>
+<tr>
+<td>triage_sbp</td>
+<td>134.87</td>
+<td>22.03</td>
+<td>1.00</td>
+<td>273.66</td>
+</tr>
+<tr>
+<td>triage_dbp</td>
+<td>77.49</td>
+<td>14.68</td>
+<td>0</td>
+<td>375</td>
+</tr>
+<tr>
+<td>triage_acuity</td>
+<td>2.63</td>
+<td>0.71</td>
+<td>1</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>Categorical variables:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gender</td>
+<td>Female: 54.2%, Male: 45.8%</td>
+</tr>
+</tbody>
+</table>
+<p>These statistics are provided solely for demonstration purposes and do not represent the original development cohort.</p>
+<h2 id="22-outcome-columns">2.2 Outcome Columns<a class="headerlink" href="#22-outcome-columns" title="Permanent link">&para;</a></h2>
+<p>Binary outcome labels prefixed with:  </p>
+<p><div class="highlight"><pre><span></span><code>outcome_
+</code></pre></div>
+Example outcome columns: </p>
+<div class="highlight"><pre><span></span><code>outcome_hospitalization
+outcome_critical
+outcome_sepsis
+outcome_aki
+outcome_pe
+</code></pre></div>
+<p>Each outcome column should contain:  </p>
+<div class="highlight"><pre><span></span><code><span class="nv">0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>negative
+<span class="nv">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>positive
+</code></pre></div>
+<p>The following outcome prevalences were calculated from the synthetic sample dataset.</p>
+<table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th>Prevalence (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>outcome_hospitalization</td>
+<td>48.04</td>
+</tr>
+<tr>
+<td>outcome_critical</td>
+<td>6.65</td>
+</tr>
+<tr>
+<td>outcome_sepsis</td>
+<td>2.57</td>
+</tr>
+<tr>
+<td>outcome_aki</td>
+<td>7.04</td>
+</tr>
+<tr>
+<td>outcome_acs_mi</td>
+<td>1.95</td>
+</tr>
+<tr>
+<td>outcome_copd_asthma</td>
+<td>1.90</td>
+</tr>
+</tbody>
+</table>
+<p>Outcome prevalence is computed as:</p>
+<h2 id="prevalence-outcomemean"><div class="highlight"><pre><span></span><code><span class="n">prevalence</span> <span class="o">=</span> <span class="n">outcome</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</code></pre></div><a class="headerlink" href="#prevalence-outcomemean" title="Permanent link">&para;</a></h2>
+<h1 id="3-output-directory">3. Output Directory<a class="headerlink" href="#3-output-directory" title="Permanent link">&para;</a></h1>
+<p>The notebook saves all generated artifacts under a user-defined output directory.  </p>
+<p>Example configuration:  </p>
+<div class="highlight"><pre><span></span><code><span class="n">OUTPUT_DIR</span> <span class="o">=</span> <span class="s2">&quot;output/&quot;</span>
+</code></pre></div>
+<p>If the directory does not exist, the notebook will create it automatically.  </p>
+<hr />
+<h1 id="4-saved-artifacts">4. Saved Artifacts<a class="headerlink" href="#4-saved-artifacts" title="Permanent link">&para;</a></h1>
+<p>The pipeline produces several reusable artifacts during training.  </p>
+<h2 id="41-model-checkpoint">4.1 Model Checkpoint<a class="headerlink" href="#41-model-checkpoint" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">MODEL_CKPT_PATH</span> <span class="o">=</span> <span class="n">OUTPUT_DIR</span> <span class="o">+</span> <span class="s2">&quot;best_multidiseasepred.pt&quot;</span>
+</code></pre></div>
+<p>This file stores the trained PyTorch model weights selected using validation performance.  </p>
+<p>The checkpoint is reused for:  </p>
+<ul>
+<li>
+<p>calibration    </p>
+</li>
+<li>
+<p>internal evaluation  </p>
+</li>
+<li>
+<p>external validation  </p>
+</li>
+</ul>
+<h2 id="42-feature-scaler">4.2 Feature Scaler<a class="headerlink" href="#42-feature-scaler" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">FEATURE_SCALER_PATH</span> <span class="o">=</span> <span class="n">OUTPUT_DIR</span> <span class="o">+</span> <span class="s2">&quot;feature_scaler_umn.pkl&quot;</span>
+</code></pre></div>
+<p>This file stores preprocessing information learned from the training dataset, including:  </p>
+<ul>
+<li>
+<p>fitted feature scaler  </p>
+</li>
+<li>
+<p>feature medians  </p>
+</li>
+<li>
+<p>feature column order  </p>
+</li>
+</ul>
+<p>The scaler must be reused for:</p>
+<ul>
+<li>
+<p>validation  </p>
+</li>
+<li>
+<p>test evaluation  </p>
+</li>
+<li>
+<p>external validation  </p>
+</li>
+</ul>
+<p>The scaler should <strong>never be refit on external datasets</strong>.  </p>
+<h2 id="43-calibration-model">4.3 Calibration Model<a class="headerlink" href="#43-calibration-model" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">CALIBRATOR_PATH</span> <span class="o">=</span> <span class="n">OUTPUT_DIR</span> <span class="o">+</span> <span class="s2">&quot;calibrator_isotonic.pkl&quot;</span>
+</code></pre></div>
+<p>This file stores task-wise isotonic regression models used to calibrate prediction scores.  </p>
+<p>Calibration is fitted on validation outputs and then applied to:  </p>
+<ul>
+<li>
+<p>internal test predictions  </p>
+</li>
+<li>
+<p>external validation predictions</p>
+</li>
+</ul>
+<hr />
+<h1 id="5-feature-alignment">5. Feature Alignment<a class="headerlink" href="#5-feature-alignment" title="Permanent link">&para;</a></h1>
+<p>External datasets may not contain all training features.  </p>
+<p>To ensure consistency, the notebook uses a helper function:  </p>
+<p><div class="highlight"><pre><span></span><code><span class="n">ensure_feature_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">required_cols</span><span class="p">)</span>
+</code></pre></div>
+This function:  </p>
+<ul>
+<li>
+<p>adds missing feature columns  </p>
+</li>
+<li>
+<p>fills missing columns with <strong>NaN</strong>  </p>
+</li>
+<li>
+<p>restores the correct training feature order  </p>
+</li>
+</ul>
+<p>This step is critical for preventing shape mismatches during evaluation.  </p>
+<hr />
+<h1 id="6-important-consistency-rules">6. Important Consistency Rules<a class="headerlink" href="#6-important-consistency-rules" title="Permanent link">&para;</a></h1>
+<p>To obtain valid results, the following rules must be respected.  </p>
+<h2 id="feature-order-consistency">Feature Order Consistency<a class="headerlink" href="#feature-order-consistency" title="Permanent link">&para;</a></h2>
+<p>The feature order used during training must be preserved during:  </p>
+<ul>
+<li>
+<p>validation  </p>
+</li>
+<li>
+<p>testing  </p>
+</li>
+<li>
+<p>external evaluation</p>
+</li>
+</ul>
+<h2 id="preprocessing-consistency">Preprocessing Consistency<a class="headerlink" href="#preprocessing-consistency" title="Permanent link">&para;</a></h2>
+<p>Only the training dataset should be used to compute preprocessing statistics.  </p>
+<p>External datasets must reuse the saved scaler.  </p>
+<h2 id="calibration-consistency">Calibration Consistency<a class="headerlink" href="#calibration-consistency" title="Permanent link">&para;</a></h2>
+<p>Calibration input scale must remain consistent.  </p>
+<p>If calibrators are fitted on logits:  </p>
+<p><div class="highlight"><pre><span></span><code>apply<span class="w"> </span>calibrator<span class="w"> </span>to<span class="w"> </span>logits
+</code></pre></div>
+If calibrators are fitted on probabilities:  </p>
+<p><div class="highlight"><pre><span></span><code>apply<span class="w"> </span>calibrator<span class="w"> </span>to<span class="w"> </span>probabilities
+</code></pre></div>
+Mixing scales may produce incorrect performance metrics.   </p>
+<hr />
+<h1 id="7-typical-directory-layout">7. Typical Directory Layout<a class="headerlink" href="#7-typical-directory-layout" title="Permanent link">&para;</a></h1>
+<p>A typical project structure may look like:  </p>
+<div class="highlight"><pre><span></span><code>MultiDiseasePred/
+│
+├──<span class="w"> </span>data/
+│<span class="w">   </span>├──<span class="w"> </span>umn/
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>train.csv
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>test.csv
+│<span class="w">   </span>│
+│<span class="w">   </span>├──<span class="w"> </span>master_dataset.csv
+│<span class="w">   </span>└──<span class="w"> </span>stanford/
+│<span class="w">       </span>└──<span class="w"> </span>stanford_features_labels.csv
+│
+├──<span class="w"> </span>output/
+│<span class="w">   </span>├──<span class="w"> </span>best_multidiseasepred.pt
+│<span class="w">   </span>├──<span class="w"> </span>feature_scaler_umn.pkl
+│<span class="w">   </span>└──<span class="w"> </span>calibrator_isotonic.pkl
+│
+└──<span class="w"> </span>MultiDiseasePred_Train_Validation.ipynb
+</code></pre></div>
+<hr />
+<h1 id="8-summary">8. Summary<a class="headerlink" href="#8-summary" title="Permanent link">&para;</a></h1>
+<p>Before running the pipeline, users should confirm:  </p>
+<ul>
+<li>
+<p>dataset paths are correctly configured  </p>
+</li>
+<li>
+<p>required feature columns exist  </p>
+</li>
+<li>
+<p>outcome labels are properly formatted  </p>
+</li>
+<li>
+<p>output directory is writable  </p>
+</li>
+</ul>
+<p>Once configured, the notebook can be executed sequentially to run the complete MultiDiseasePred workflow.  </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

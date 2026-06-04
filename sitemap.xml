@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://fengx13.github.io/MultiDiseasePred/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fengx13.github.io/MultiDiseasePred/data_paths/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fengx13.github.io/MultiDiseasePred/demo/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fengx13.github.io/MultiDiseasePred/installation/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fengx13.github.io/MultiDiseasePred/tutorial/01_training/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fengx13.github.io/MultiDiseasePred/tutorial/02_calibration/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fengx13.github.io/MultiDiseasePred/tutorial/03_external_validation/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+    <url>
+         <loc>https://fengx13.github.io/MultiDiseasePred/tutorial/04_parsimonious_feature_selection/</loc>
+         <lastmod>2026-06-04</lastmod>
+    </url>
+</urlset>

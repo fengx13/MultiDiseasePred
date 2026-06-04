@@ -1,0 +1,750 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Multi-task clinical outcome prediction framework with training, calibration, and external validation">
+      
+      
+      
+        <link rel="canonical" href="https://fengx13.github.io/MultiDiseasePred/tutorial/04_parsimonious_feature_selection/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>04 parsimonious feature selection - MultiDiseasePred</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#parsimonious-feature-selection" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MultiDiseasePred" class="md-header__button md-logo" aria-label="MultiDiseasePred" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MultiDiseasePred
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              04 parsimonious feature selection
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fengx13/MultiDiseasePred" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MultiDiseasePred
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MultiDiseasePred" class="md-nav__button md-logo" aria-label="MultiDiseasePred" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MultiDiseasePred
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fengx13/MultiDiseasePred" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MultiDiseasePred
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_paths/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data Paths & Outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorial
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_calibration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calibration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_external_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h2 id="parsimonious-feature-selection">Parsimonious Feature Selection<a class="headerlink" href="#parsimonious-feature-selection" title="Permanent link">&para;</a></h2>
+<p>This tutorial explains how the notebook performs <strong>SHAP-based global feature ranking</strong> and constructs parsimonious feature subsets for reduced-feature experiments.</p>
+<p>All steps are implemented at the end of:</p>
+<p>MultiDiseasePred_Train_Validation.ipynb</p>
+<hr />
+<h3 id="what-this-module-does">What this module does<a class="headerlink" href="#what-this-module-does" title="Permanent link">&para;</a></h3>
+<p>After training the full MultiDiseasePred model, the notebook:</p>
+<ol>
+<li>wraps the multitask model so that outputs are consistently formatted as <code>(B, T)</code></li>
+<li>computes SHAP values using <code>shap.DeepExplainer</code></li>
+<li>converts SHAP outputs into a unified tensor with shape <code>(T, N, D)</code>, where:</li>
+<li><code>T</code> = number of tasks</li>
+<li><code>N</code> = number of explained samples</li>
+<li><code>D</code> = number of input features</li>
+<li>computes <strong>global feature importance</strong> using:</li>
+</ol>
+<p><code>mean(|SHAP|)</code> across tasks and samples</p>
+<ol>
+<li>ranks all features from most important to least important</li>
+<li>extracts:</li>
+<li><strong>Top-10 features</strong></li>
+<li><strong>Top-15 features</strong></li>
+<li>saves the full ranking table and ranking plots</li>
+</ol>
+<h3 id="ranking-outputs">Ranking outputs<a class="headerlink" href="#ranking-outputs" title="Permanent link">&para;</a></h3>
+<p>The notebook generates:</p>
+<ul>
+<li><code>global_shap_feature_ranking_all_63.csv</code></li>
+<li><code>global_shap_feature_ranking_top10.png</code></li>
+<li><code>global_shap_feature_ranking_top10.pdf</code></li>
+<li><code>global_shap_feature_ranking_top15.png</code></li>
+<li><code>global_shap_feature_ranking_top15.pdf</code></li>
+</ul>
+<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
+<p>These rankings can be used to define <strong>parsimonious feature subsets</strong> for follow-up experiments, such as:</p>
+<ul>
+<li>retraining the model using only the Top-10 features</li>
+<li>retraining the model using only the Top-15 features</li>
+<li>comparing reduced-feature performance against the full 63-feature model</li>
+</ul>
+<h3 id="current-implementation-note">Current implementation note<a class="headerlink" href="#current-implementation-note" title="Permanent link">&para;</a></h3>
+<p>The current notebook computes and exports the ranking results, including the Top-10 and Top-15 feature lists. These selected feature subsets can then be reused in downstream training experiments.</p>
+<hr />
+<h1 id="1-goal">1. Goal<a class="headerlink" href="#1-goal" title="Permanent link">&para;</a></h1>
+<p>The purpose of this module is to identify a compact subset of important features after training the full MultiDiseasePred model.</p>
+<p>Instead of manually selecting variables, the notebook uses <strong>global SHAP importance</strong> to rank all input features and extract:</p>
+<ul>
+<li>Top-10 features</li>
+<li>Top-15 features</li>
+</ul>
+<p>These ranked subsets can then be used for parsimonious retraining and model comparison.</p>
+<hr />
+<h1 id="2-wrap-the-multi-task-model-output">2. Wrap the Multi-Task Model Output<a class="headerlink" href="#2-wrap-the-multi-task-model-output" title="Permanent link">&para;</a></h1>
+<p>Because the model may return outputs in different formats (dictionary, tuple/list, or tensor), the notebook first defines a wrapper class:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MultiOut</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+</code></pre></div>
+<p>This wrapper converts the model output into a consistent tensor of shape:</p>
+<p><code>(B, T)</code></p>
+<p>where:</p>
+<p><code>B</code> = batch size<br />
+<code>T</code> = number of tasks  </p>
+<p>This step is required so that SHAP can correctly interpret the multi-task model. </p>
+<hr />
+<h1 id="3-prepare-background-and-explanation-samples">3. Prepare Background and Explanation Samples<a class="headerlink" href="#3-prepare-background-and-explanation-samples" title="Permanent link">&para;</a></h1>
+<p>The notebook then prepares:</p>
+<ul>
+<li>a background set for <code>shap.DeepExplainer</code></li>
+<li>a separate explanation set for SHAP computation</li>
+</ul>
+<p>Example configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="n">bg_size</span> <span class="o">=</span> <span class="mi">256</span>
+<span class="n">exp_size</span> <span class="o">=</span> <span class="mi">1024</span>
+</code></pre></div>
+<p>The background set defines the SHAP baseline, while the explanation set is used to estimate feature contributions.</p>
+<hr />
+<h1 id="4-compute-shap-values">4. Compute SHAP Values<a class="headerlink" href="#4-compute-shap-values" title="Permanent link">&para;</a></h1>
+<p>SHAP values are computed using:</p>
+<div class="highlight"><pre><span></span><code><span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">DeepExplainer</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">bg_data</span><span class="p">)</span>
+<span class="n">shap_vals</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">shap_values</span><span class="p">(</span><span class="n">exp_data</span><span class="p">,</span> <span class="n">check_additivity</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>Depending on the SHAP output format, the notebook standardizes the result into a tensor with shape:</p>
+<p><code>(T, N, D)</code></p>
+<p>where:</p>
+<ul>
+<li><code>T</code> = number of prediction tasks</li>
+<li><code>N</code> = number of explained samples</li>
+<li><code>D</code> = number of features</li>
+</ul>
+<p>This standardized tensor is stored as:</p>
+<p><code>shap_TND</code></p>
+<hr />
+<h1 id="5-compute-global-feature-importance">5. Compute Global Feature Importance<a class="headerlink" href="#5-compute-global-feature-importance" title="Permanent link">&para;</a></h1>
+<p>Once <code>shap_TND</code> is available, the notebook computes global importance using:</p>
+<div class="highlight"><pre><span></span><code><span class="n">global_mean_abs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">shap_TND</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+<p>This computes:</p>
+<p>mean(SHAP) across all tasks and all samples, which gives one global importance score per feature.</p>
+<p>The notebook also computes task-specific SHAP summaries for reference:</p>
+<h2 id="task_mean_abs-npmeannpabsshap_tnd-axis1"><div class="highlight"><pre><span></span><code><span class="n">task_mean_abs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">shap_TND</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div><a class="headerlink" href="#task_mean_abs-npmeannpabsshap_tnd-axis1" title="Permanent link">&para;</a></h2>
+<h1 id="6-build-the-global-ranking-table">6. Build the Global Ranking Table<a class="headerlink" href="#6-build-the-global-ranking-table" title="Permanent link">&para;</a></h1>
+<p>The notebook constructs a ranking table containing:</p>
+<ul>
+<li>raw feature name</li>
+<li>pretty-formatted feature name</li>
+<li>global mean absolute SHAP value</li>
+<li>global rank</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">rank_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;feature&quot;</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span>
+    <span class="s2">&quot;feature_pretty&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">format_feature_name</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">feature_names</span><span class="p">],</span>
+    <span class="s2">&quot;global_mean_abs_shap&quot;</span><span class="p">:</span> <span class="n">global_mean_abs</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div>
+<p>The table is then sorted in descending order of SHAP importance.</p>
+<hr />
+<h1 id="7-extract-top-10-and-top-15-features">7. Extract Top-10 and Top-15 Features<a class="headerlink" href="#7-extract-top-10-and-top-15-features" title="Permanent link">&para;</a></h1>
+<p>After sorting, the notebook extracts:</p>
+<div class="highlight"><pre><span></span><code><span class="n">top10_features</span> <span class="o">=</span> <span class="n">rank_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;feature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">top15_features</span> <span class="o">=</span> <span class="n">rank_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">14</span><span class="p">,</span> <span class="s2">&quot;feature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</code></pre></div>
+<p>It also stores pretty-formatted versions for presentation:</p>
+<div class="highlight"><pre><span></span><code><span class="n">top10_pretty</span>
+<span class="n">top15_pretty</span>
+</code></pre></div>
+<p>These lists are printed directly in the notebook output.</p>
+<hr />
+<ol>
+<li>Save the Full Ranking Table</li>
+</ol>
+<p>The full ranking table for all 63 features is saved as:</p>
+<div class="highlight"><pre><span></span><code><span class="n">global_shap_feature_ranking_all_63</span><span class="o">.</span><span class="n">csv</span>
+</code></pre></div>
+<p>This file contains the complete SHAP-based global ranking and can be used for:</p>
+<ul>
+<li>documentation</li>
+<li>reporting</li>
+<li>follow-up parsimonious training experiments</li>
+</ul>
+<hr />
+<h1 id="9-plot-the-global-ranking">9. Plot the Global Ranking<a class="headerlink" href="#9-plot-the-global-ranking" title="Permanent link">&para;</a></h1>
+<p>The notebook defines a plotting helper:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_global_ranking</span><span class="p">(</span><span class="n">rank_df</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">save_prefix</span><span class="o">=</span><span class="s2">&quot;global_shap_feature_ranking&quot;</span><span class="p">):</span>
+<span class="o">...</span>
+</code></pre></div>
+<p>This function generates horizontal bar plots for the most important features.</p>
+<p>The notebook currently generates:</p>
+<ul>
+<li>Top-10 ranking plot</li>
+<li>Top-15 ranking plot</li>
+</ul>
+<hr />
+<h1 id="10-outputs-produced-by-this-module">10. Outputs Produced by This Module<a class="headerlink" href="#10-outputs-produced-by-this-module" title="Permanent link">&para;</a></h1>
+<p>After running the parsimonious feature selection cells, the notebook produces:</p>
+<ul>
+<li>a unified SHAP tensor: <code>shap_TND</code></li>
+<li>a global ranking table: <code>rank_df</code></li>
+<li>Top-10 feature list</li>
+<li>Top-15 feature list</li>
+<li>full ranking CSV</li>
+<li>Top-10 / Top-15 ranking figures</li>
+</ul>
+<hr />
+<h1 id="11-how-to-use-the-selected-features">11. How to Use the Selected Features<a class="headerlink" href="#11-how-to-use-the-selected-features" title="Permanent link">&para;</a></h1>
+<p>The current notebook computes and exports the feature rankings.
+To run a parsimonious experiment, users can manually replace the full feature set with one of the selected subsets, for example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">selected_features</span> <span class="o">=</span> <span class="n">top10_features</span>
+</code></pre></div>
+<p>and then rerun the training / calibration / evaluation pipeline using only those selected columns.</p>
+<p>This enables direct comparison between:</p>
+<ul>
+<li>full 63-feature model</li>
+<li>Top-10 parsimonious model</li>
+<li>Top-15 parsimonious model</li>
+</ul>
+<hr />
+<h1 id="12-summary">12. Summary<a class="headerlink" href="#12-summary" title="Permanent link">&para;</a></h1>
+<p>The parsimonious feature selection workflow is:</p>
+<p>train full model<br />
+↓<br />
+wrap model outputs into (B, T)<br />
+↓<br />
+compute SHAP values<br />
+↓<br />
+standardize SHAP tensor to (T, N, D)<br />
+↓<br />
+compute global mean(SHAP)<br />
+↓<br />
+rank all 63 features<br />
+↓<br />
+extract Top-10 and Top-15 feature sets<br />
+↓<br />
+save ranking table and plots  </p>
+<p>This module provides an interpretable and reproducible way to define reduced-feature versions of MultiDiseasePred.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "content.code.copy", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
