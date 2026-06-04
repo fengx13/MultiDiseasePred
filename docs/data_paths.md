@@ -8,6 +8,32 @@ MultiDiseasePred_Train_Validation.ipynb
 
 Users should modify these paths according to their local environment before running the pipeline.
 
+## Sample Data Notice
+
+To facilitate reproducibility and allow users to run the full MultiDiseasePred pipeline without access to the original clinical datasets, this repository provides a synthetic sample dataset.
+
+The sample dataset was randomly generated from the original development dataset while preserving the overall statistical distributions of the variables. No real patient-level information is included.
+
+Key characteristics:
+
+- Approximately 20% of the original dataset size
+- Identical column names and table structure
+- Similar feature distributions to the original dataset
+- Suitable for demonstrating:
+  - data preprocessing
+  - model training
+  - external validation
+  - calibration
+  - parsimonious feature selection
+
+Unless otherwise noted, all datasets included in this GitHub repository are synthetic sample datasets generated for demonstration purposes.
+
+The synthetic sample dataset used throughout the tutorials can be found in:
+
+```text
+data/sample_data_train.csv
+```
+
 ---
 
 # 1. Input Dataset Paths
@@ -108,6 +134,27 @@ cci_score
 n_ed_90d
 ```
 
+The following statistics were calculated from the provided synthetic sample dataset (`sample_data_train.csv`).
+
+| Feature | Mean | Std | Min | Max |
+|----------|----------|----------|----------|----------|
+| age | 52.85 | 20.59 | 18 | 101 |
+| triage_temperature | 36.71 | 0.53 | 26.00 | 43.44 |
+| triage_heartrate | 85.06 | 17.38 | 10.18 | 255.99 |
+| triage_resprate | 17.57 | 2.43 | 1 | 189 |
+| triage_o2sat | 98.40 | 2.41 | 0 | 100 |
+| triage_sbp | 134.87 | 22.03 | 1.00 | 273.66 |
+| triage_dbp | 77.49 | 14.68 | 0 | 375 |
+| triage_acuity | 2.63 | 0.71 | 1 | 5 |
+
+Categorical variables:
+
+| Feature | Distribution |
+|----------|----------|
+| gender | Female: 54.2%, Male: 45.8% |
+
+These statistics are provided solely for demonstration purposes and do not represent the original development cohort.
+
 ## 2.2 Outcome Columns
 
 Binary outcome labels prefixed with:  
@@ -130,6 +177,23 @@ Each outcome column should contain:
 ```bash
 0 = negative
 1 = positive
+```
+
+The following outcome prevalences were calculated from the synthetic sample dataset.
+
+| Outcome | Prevalence (%) |
+|----------|----------|
+| outcome_hospitalization | 48.04 |
+| outcome_critical | 6.65 |
+| outcome_sepsis | 2.57 |
+| outcome_aki | 7.04 |
+| outcome_acs_mi | 1.95 |
+| outcome_copd_asthma | 1.90 |
+
+Outcome prevalence is computed as:
+
+```python
+prevalence = outcome.mean()
 ```
 ---
 
