@@ -33,8 +33,8 @@ Before running the training cells, update the dataset paths defined near the beg
 Example configuration:  
 
 ```python
-UMN_TRAIN_CSV = "data/umn/train.csv"
-UMN_TEST_CSV  = "data/umn/test.csv"
+UMN_TRAIN_CSV = "data/sample_data_train.csv"
+UMN_TEST_CSV  = "data/sample_data_test.csv"
 ```
 
 The training dataset will be used to:  
@@ -82,8 +82,22 @@ The pipeline requires explicit definitions for:
 Example:  
 
 ```python
-feature_cols = [...]
-outcome_list = [...]
+feature_cols = [
+'age',
+'triage_heartrate',
+'triage_resprate',
+'triage_temperature',
+'triage_o2sat',
+'cci_score',
+'n_ed_90d'
+]
+outcome_list = [
+'outcome_hospitalization',
+'outcome_critical',
+'outcome_sepsis',
+'outcome_aki',
+'outcome_pe'
+]
 ```
 Outcome columns should follow the naming pattern:  
 ```bash
@@ -273,4 +287,4 @@ These artifacts are required for downstream steps in the pipeline.
 
 Once training is complete, proceed to the calibration tutorial:  
 
-Calibration  
+[Calibration](https://github.com/fengx13/MultiDiseasePred/blob/main/docs/tutorial/02_calibration.md)  
