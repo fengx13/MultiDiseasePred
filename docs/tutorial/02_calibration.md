@@ -289,4 +289,4 @@ This is different from a standard internal-validation-based calibration pipeline
 
 After calibration, proceed to the external validation tutorial:  
 
-External Validation
+[External Validation](https://github.com/fengx13/MultiDiseasePred/blob/main/docs/tutorial/03_external_validation.md) 
