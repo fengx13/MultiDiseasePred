@@ -31,7 +31,7 @@ Unless otherwise noted, all datasets included in this GitHub repository are synt
 The synthetic sample dataset used throughout the tutorials can be found in:
 
 ```text
-data/sample_data_train.csv
+data/sample_data.zip
 ```
 
 ---
