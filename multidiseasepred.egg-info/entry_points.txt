@@ -1,0 +1,2 @@
+[console_scripts]
+multidiseasepred = multidiseasepred.cli:main

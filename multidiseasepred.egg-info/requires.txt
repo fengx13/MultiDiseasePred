@@ -1,0 +1,16 @@
+numpy>=1.22
+pandas>=1.4
+scikit-learn>=1.1
+scipy>=1.8
+joblib>=1.1
+
+[dashboard]
+torch>=1.12
+streamlit>=1.30
+
+[dev]
+pytest>=7
+torch>=1.12
+
+[model]
+torch>=1.12

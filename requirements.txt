@@ -1,0 +1,11 @@
+# Everything needed to train a model and run a generated dashboard.
+# The package itself installs a lighter core (see pyproject.toml): variable
+# selection, calibration and evaluation need only scikit-learn, so if you are
+# not training a network you can skip torch.
+numpy>=1.22
+pandas>=1.4
+scikit-learn>=1.1
+scipy>=1.8
+joblib>=1.1
+torch>=1.12          # the model
+streamlit>=1.30      # the generated dashboard

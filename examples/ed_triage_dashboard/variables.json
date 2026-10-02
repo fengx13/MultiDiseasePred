@@ -1,0 +1,134 @@
+{
+  "variables": [
+    {
+      "name": "age",
+      "label": "Age",
+      "kind": "numeric",
+      "default": 51.994,
+      "min": 9.8,
+      "max": 108.2,
+      "step": 1.0
+    },
+    {
+      "name": "chiefcom_shortness_of_breath",
+      "label": "Chiefcom shortness of breath",
+      "kind": "binary",
+      "default": 0,
+      "min": 0,
+      "max": 1,
+      "step": 1
+    },
+    {
+      "name": "eci_PHTN",
+      "label": "Eci phtn",
+      "kind": "binary",
+      "default": 0,
+      "min": 0,
+      "max": 1,
+      "step": 1
+    },
+    {
+      "name": "triage_o2sat",
+      "label": "Triage o2sat",
+      "kind": "numeric",
+      "default": 97.499,
+      "min": 89.298,
+      "max": 100.973,
+      "step": 0.1
+    },
+    {
+      "name": "eci_FluidsLytes",
+      "label": "Eci fluidslytes",
+      "kind": "binary",
+      "default": 0,
+      "min": 0,
+      "max": 1,
+      "step": 1
+    },
+    {
+      "name": "cci_MI",
+      "label": "Cci mi",
+      "kind": "binary",
+      "default": 0,
+      "min": 0,
+      "max": 1,
+      "step": 1
+    },
+    {
+      "name": "cci_Pulmonary",
+      "label": "Cci pulmonary",
+      "kind": "binary",
+      "default": 0,
+      "min": 0,
+      "max": 1,
+      "step": 1
+    },
+    {
+      "name": "triage_dbp",
+      "label": "Triage dbp",
+      "kind": "numeric",
+      "default": 77.924,
+      "min": 35.159,
+      "max": 120.727,
+      "step": 1.0
+    },
+    {
+      "name": "chiefcom_fever_chills",
+      "label": "Chiefcom fever chills",
+      "kind": "binary",
+      "default": 0,
+      "min": 0,
+      "max": 1,
+      "step": 1
+    },
+    {
+      "name": "triage_resprate",
+      "label": "Triage resprate",
+      "kind": "numeric",
+      "default": 18.004,
+      "min": 7.132,
+      "max": 28.888,
+      "step": 0.1
+    },
+    {
+      "name": "triage_heartrate",
+      "label": "Triage heartrate",
+      "kind": "numeric",
+      "default": 81.865,
+      "min": 29.01,
+      "max": 134.266,
+      "step": 1.0
+    },
+    {
+      "name": "cci_Renal",
+      "label": "Cci renal",
+      "kind": "binary",
+      "default": 0,
+      "min": 0,
+      "max": 1,
+      "step": 1
+    }
+  ],
+  "targets": [
+    "sepsis",
+    "viral_pneumonia",
+    "ards",
+    "pulmonary_embolism",
+    "copd_asthma_exacerbation",
+    "acute_coronary_syndrome",
+    "acute_kidney_injury",
+    "hospitalization",
+    "critical_outcome"
+  ],
+  "prevalence": [
+    0.0262,
+    0.004425,
+    0.0012,
+    0.007675,
+    0.025075,
+    0.0223,
+    0.052375,
+    0.201225,
+    0.009
+  ]
+}

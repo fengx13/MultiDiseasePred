@@ -1,0 +1,89 @@
+{
+  "variables": [
+    "age",
+    "chiefcom_shortness_of_breath",
+    "eci_PHTN",
+    "triage_o2sat",
+    "eci_FluidsLytes",
+    "cci_MI",
+    "cci_Pulmonary",
+    "triage_dbp",
+    "chiefcom_fever_chills",
+    "triage_resprate",
+    "triage_heartrate",
+    "cci_Renal"
+  ],
+  "targets": [
+    "sepsis",
+    "viral_pneumonia",
+    "ards",
+    "pulmonary_embolism",
+    "copd_asthma_exacerbation",
+    "acute_coronary_syndrome",
+    "acute_kidney_injury",
+    "hospitalization",
+    "critical_outcome"
+  ],
+  "groups": {
+    "acute conditions": [
+      "sepsis",
+      "viral_pneumonia",
+      "ards",
+      "pulmonary_embolism",
+      "copd_asthma_exacerbation",
+      "acute_coronary_syndrome",
+      "acute_kidney_injury"
+    ],
+    "disposition": [
+      "hospitalization",
+      "critical_outcome"
+    ]
+  },
+  "hp": {
+    "hidden": 256,
+    "n_experts": 13,
+    "temperature": 0.2
+  },
+  "seed": 42,
+  "selected": null,
+  "mean": [
+    52.47536087036133,
+    0.08927500247955322,
+    0.0703750029206276,
+    97.2103042602539,
+    0.2952499985694885,
+    0.0695749968290329,
+    0.2222750037908554,
+    77.95089721679688,
+    0.06137499958276749,
+    17.998714447021484,
+    81.81990814208984,
+    0.13349999487400055
+  ],
+  "scale": [
+    19.9193115234375,
+    0.2851402759552002,
+    0.2557779550552368,
+    2.3719277381896973,
+    0.45615503191947937,
+    0.2544293999671936,
+    0.41577497124671936,
+    13.943205833435059,
+    0.2400168925523758,
+    3.50608491897583,
+    17.040813446044922,
+    0.3401143252849579
+  ],
+  "prevalence": [
+    0.0262,
+    0.004425,
+    0.0012,
+    0.007675,
+    0.025075,
+    0.0223,
+    0.052375,
+    0.201225,
+    0.009
+  ],
+  "n_networks": 2
+}

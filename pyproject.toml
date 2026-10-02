@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multidiseasepred"
+version = "0.1.0"
+description = "One multi-task model for many non-mutually-exclusive outcomes, with calibrated risk and a generated dashboard"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Yanwei Jin" }, { name = "Ke Xu" }, { name = "Feng Xie" }]
+keywords = ["multi-task learning", "clinical prediction", "calibration",
+            "risk prediction", "mixture of experts"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+
+# Core install stays light on purpose: variable selection, calibration and
+# evaluation are useful on their own and should not drag in a GPU stack.
+dependencies = [
+    "numpy>=1.22",
+    "pandas>=1.4",
+    "scikit-learn>=1.1",
+    "scipy>=1.8",
+    "joblib>=1.1",
+]
+
+[project.optional-dependencies]
+model = ["torch>=1.12"]                       # training and inference
+dashboard = ["torch>=1.12", "streamlit>=1.30"]
+dev = ["pytest>=7", "torch>=1.12"]
+
+[project.scripts]
+multidiseasepred = "multidiseasepred.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/fengx13/MultiDiseasePred"
+Documentation = "https://fengx13.github.io/MultiDiseasePred/"
+
+[tool.setuptools]
+packages = ["multidiseasepred"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
