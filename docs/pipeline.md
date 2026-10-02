@@ -5,9 +5,7 @@ This page is the map. The scripts themselves carry the detail, and the reasoning
 behind each choice is written into their docstrings rather than left implicit.
 
 If you are here to check what was actually done, this page and `pipeline/` are
-the authoritative pair. The notebook under `notebook/` is a teaching example that
-predates this pipeline and differs from it; the tutorial pages describe that
-notebook, not this.
+the authoritative pair.
 
 ---
 
@@ -104,11 +102,9 @@ the mean over three seeds, 42, 43 and 44.
 Per-target isotonic regression on the logit scale, **fitted on the development
 cohort and applied unchanged** to the internal and external validation sets.
 
-This is the point where the notebook and the pipeline diverge most sharply. The
-notebook splits the external dataset and fits the calibrator inside it. The
-pipeline does not: the external results are reported without local retraining and
-without recalibration, which is what makes them a transportability result rather
-than a local-refit result.
+The external results are reported without local retraining and without
+recalibration, which is what makes them a transportability result rather than a
+local-refit result.
 
 Isotonic recalibration on the logit is monotone, so it cannot change AUROC or
 AUPRC — except where a fitted slope comes out negative, which inverts the

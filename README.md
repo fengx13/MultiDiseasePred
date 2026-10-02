@@ -232,7 +232,6 @@ the weighting, not the membership.
 multidiseasepred/    the package — this is the thing to use
 examples/            build_ed_dashboard.py — builds our ED demo *using the package*
 pipeline/            supplementary: the exact scripts behind the manuscript
-notebook/            an earlier teaching walkthrough (see the warning below)
 tests/               pytest suite
 docs/                documentation site
 ```
@@ -240,12 +239,6 @@ docs/                documentation site
 **`pipeline/` is supplementary.** Those 29 scripts are what produced the numbers
 in the paper, kept so the results can be checked. They are not the interface;
 `multidiseasepred` is.
-
-**`notebook/` does not reproduce the manuscript.** It predates the final method
-and differs from it where it matters — it ranks variables by global SHAP
-importance rather than greedy selection, and fits the calibrator inside the
-external dataset. It is kept as a readable example, and the tutorial pages say
-so at the top.
 
 ---
 
