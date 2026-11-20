@@ -28,3 +28,4 @@ nav:
   - Home: index.md
   - Using the package: quickstart.md
   - The published pipeline: pipeline.md
+  - Live dashboard: https://fengx13.github.io/MultiDiseasePred/dashboard/

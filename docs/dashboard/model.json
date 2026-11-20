@@ -1,0 +1,1701 @@
+{
+ "note": "Exported from the MultiDiseasePred Streamlit dashboard. Weights were trained on synthetic data; probabilities are illustrative.",
+ "arch": {
+  "hidden": 256,
+  "experts": 13,
+  "tasks": 9,
+  "temperature": 0.2,
+  "alpha": 0.1
+ },
+ "tensors": {
+  "shared_layer.S": {
+   "offset": 0,
+   "shape": [
+    9,
+    13
+   ]
+  },
+  "shared_layer.A": {
+   "offset": 117,
+   "shape": [
+    9,
+    13
+   ]
+  },
+  "shared_layer.experts.0.net.0.weight": {
+   "offset": 234,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.0.net.0.bias": {
+   "offset": 16362,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.0.net.2.weight": {
+   "offset": 16618,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.0.net.2.bias": {
+   "offset": 82154,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.1.net.0.weight": {
+   "offset": 82410,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.1.net.0.bias": {
+   "offset": 98538,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.1.net.2.weight": {
+   "offset": 98794,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.1.net.2.bias": {
+   "offset": 164330,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.2.net.0.weight": {
+   "offset": 164586,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.2.net.0.bias": {
+   "offset": 180714,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.2.net.2.weight": {
+   "offset": 180970,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.2.net.2.bias": {
+   "offset": 246506,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.3.net.0.weight": {
+   "offset": 246762,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.3.net.0.bias": {
+   "offset": 262890,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.3.net.2.weight": {
+   "offset": 263146,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.3.net.2.bias": {
+   "offset": 328682,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.4.net.0.weight": {
+   "offset": 328938,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.4.net.0.bias": {
+   "offset": 345066,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.4.net.2.weight": {
+   "offset": 345322,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.4.net.2.bias": {
+   "offset": 410858,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.5.net.0.weight": {
+   "offset": 411114,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.5.net.0.bias": {
+   "offset": 427242,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.5.net.2.weight": {
+   "offset": 427498,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.5.net.2.bias": {
+   "offset": 493034,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.6.net.0.weight": {
+   "offset": 493290,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.6.net.0.bias": {
+   "offset": 509418,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.6.net.2.weight": {
+   "offset": 509674,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.6.net.2.bias": {
+   "offset": 575210,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.7.net.0.weight": {
+   "offset": 575466,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.7.net.0.bias": {
+   "offset": 591594,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.7.net.2.weight": {
+   "offset": 591850,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.7.net.2.bias": {
+   "offset": 657386,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.8.net.0.weight": {
+   "offset": 657642,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.8.net.0.bias": {
+   "offset": 673770,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.8.net.2.weight": {
+   "offset": 674026,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.8.net.2.bias": {
+   "offset": 739562,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.9.net.0.weight": {
+   "offset": 739818,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.9.net.0.bias": {
+   "offset": 755946,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.9.net.2.weight": {
+   "offset": 756202,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.9.net.2.bias": {
+   "offset": 821738,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.10.net.0.weight": {
+   "offset": 821994,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.10.net.0.bias": {
+   "offset": 838122,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.10.net.2.weight": {
+   "offset": 838378,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.10.net.2.bias": {
+   "offset": 903914,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.11.net.0.weight": {
+   "offset": 904170,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.11.net.0.bias": {
+   "offset": 920298,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.11.net.2.weight": {
+   "offset": 920554,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.11.net.2.bias": {
+   "offset": 986090,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.12.net.0.weight": {
+   "offset": 986346,
+   "shape": [
+    256,
+    63
+   ]
+  },
+  "shared_layer.experts.12.net.0.bias": {
+   "offset": 1002474,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.experts.12.net.2.weight": {
+   "offset": 1002730,
+   "shape": [
+    256,
+    256
+   ]
+  },
+  "shared_layer.experts.12.net.2.bias": {
+   "offset": 1068266,
+   "shape": [
+    256
+   ]
+  },
+  "shared_layer.shared_router.weight": {
+   "offset": 1068522,
+   "shape": [
+    13,
+    63
+   ]
+  },
+  "shared_layer.shared_router.bias": {
+   "offset": 1069341,
+   "shape": [
+    13
+   ]
+  },
+  "towers.0.fc.weight": {
+   "offset": 1069354,
+   "shape": [
+    1,
+    256
+   ]
+  },
+  "towers.0.fc.bias": {
+   "offset": 1069610,
+   "shape": [
+    1
+   ]
+  },
+  "towers.1.fc.weight": {
+   "offset": 1069611,
+   "shape": [
+    1,
+    256
+   ]
+  },
+  "towers.1.fc.bias": {
+   "offset": 1069867,
+   "shape": [
+    1
+   ]
+  },
+  "towers.2.fc.weight": {
+   "offset": 1069868,
+   "shape": [
+    1,
+    256
+   ]
+  },
+  "towers.2.fc.bias": {
+   "offset": 1070124,
+   "shape": [
+    1
+   ]
+  },
+  "towers.3.fc.weight": {
+   "offset": 1070125,
+   "shape": [
+    1,
+    256
+   ]
+  },
+  "towers.3.fc.bias": {
+   "offset": 1070381,
+   "shape": [
+    1
+   ]
+  },
+  "towers.4.fc.weight": {
+   "offset": 1070382,
+   "shape": [
+    1,
+    256
+   ]
+  },
+  "towers.4.fc.bias": {
+   "offset": 1070638,
+   "shape": [
+    1
+   ]
+  },
+  "towers.5.fc.weight": {
+   "offset": 1070639,
+   "shape": [
+    1,
+    256
+   ]
+  },
+  "towers.5.fc.bias": {
+   "offset": 1070895,
+   "shape": [
+    1
+   ]
+  },
+  "towers.6.fc.weight": {
+   "offset": 1070896,
+   "shape": [
+    1,
+    256
+   ]
+  },
+  "towers.6.fc.bias": {
+   "offset": 1071152,
+   "shape": [
+    1
+   ]
+  },
+  "towers.7.fc.weight": {
+   "offset": 1071153,
+   "shape": [
+    1,
+    256
+   ]
+  },
+  "towers.7.fc.bias": {
+   "offset": 1071409,
+   "shape": [
+    1
+   ]
+  },
+  "towers.8.fc.weight": {
+   "offset": 1071410,
+   "shape": [
+    1,
+    256
+   ]
+  },
+  "towers.8.fc.bias": {
+   "offset": 1071666,
+   "shape": [
+    1
+   ]
+  }
+ },
+ "feat_cols": [
+  "age",
+  "gender",
+  "n_ed_30d",
+  "n_ed_90d",
+  "n_ed_365d",
+  "n_hosp_30d",
+  "n_hosp_90d",
+  "n_hosp_365d",
+  "n_icu_30d",
+  "n_icu_90d",
+  "n_icu_365d",
+  "triage_temperature",
+  "triage_heartrate",
+  "triage_resprate",
+  "triage_o2sat",
+  "triage_sbp",
+  "triage_dbp",
+  "triage_acuity",
+  "chiefcom_chest_pain",
+  "chiefcom_abdominal_pain",
+  "chiefcom_headache",
+  "chiefcom_shortness_of_breath",
+  "chiefcom_back_pain",
+  "chiefcom_cough",
+  "chiefcom_nausea_vomiting",
+  "chiefcom_fever_chills",
+  "chiefcom_syncope",
+  "chiefcom_dizziness",
+  "cci_MI",
+  "cci_CHF",
+  "cci_PVD",
+  "cci_Stroke",
+  "cci_Dementia",
+  "cci_Pulmonary",
+  "cci_Rheumatic",
+  "cci_PUD",
+  "cci_Liver1",
+  "cci_DM1",
+  "cci_DM2",
+  "cci_Paralysis",
+  "cci_Renal",
+  "cci_Cancer1",
+  "cci_Liver2",
+  "cci_Cancer2",
+  "cci_HIV",
+  "eci_Arrhythmia",
+  "eci_Valvular",
+  "eci_PHTN",
+  "eci_HTN1",
+  "eci_HTN2",
+  "eci_NeuroOther",
+  "eci_Hypothyroid",
+  "eci_Lymphoma",
+  "eci_Coagulopathy",
+  "eci_Obesity",
+  "eci_WeightLoss",
+  "eci_FluidsLytes",
+  "eci_BloodLoss",
+  "eci_Anemia",
+  "eci_Alcohol",
+  "eci_Drugs",
+  "eci_Psychoses",
+  "eci_Depression"
+ ],
+ "scaler_mean": [
+  52.3306847450429,
+  0.5602666666666667,
+  0.30473333333333336,
+  0.29823333333333335,
+  0.2958,
+  0.2995333333333333,
+  0.29846666666666666,
+  0.2972,
+  0.2983,
+  0.2920333333333333,
+  0.3012,
+  36.80161614157689,
+  82.0384311973847,
+  18.01263874940807,
+  97.22804482456911,
+  131.98840209392804,
+  78.04833022561922,
+  2.9976,
+  0.05976666666666667,
+  0.0581,
+  0.0579,
+  0.0602,
+  0.06066666666666667,
+  0.0608,
+  0.0596,
+  0.06213333333333333,
+  0.0599,
+  0.05876666666666667,
+  0.08103333333333333,
+  0.0809,
+  0.0806,
+  0.08096666666666667,
+  0.0773,
+  0.0817,
+  0.08013333333333333,
+  0.0835,
+  0.0802,
+  0.07893333333333333,
+  0.07866666666666666,
+  0.0798,
+  0.07866666666666666,
+  0.0798,
+  0.08126666666666667,
+  0.0801,
+  0.07893333333333333,
+  0.0814,
+  0.07956666666666666,
+  0.07956666666666666,
+  0.07996666666666667,
+  0.07933333333333334,
+  0.08163333333333334,
+  0.08116666666666666,
+  0.08063333333333333,
+  0.08003333333333333,
+  0.07926666666666667,
+  0.07826666666666666,
+  0.08143333333333333,
+  0.08106666666666666,
+  0.07833333333333334,
+  0.08253333333333333,
+  0.0801,
+  0.07733333333333334,
+  0.08323333333333334
+ ],
+ "scaler_scale": [
+  19.712073243495322,
+  0.496354640241126,
+  0.549367147017611,
+  0.5485346043980748,
+  0.5418201054470527,
+  0.5466380114440723,
+  0.5434927005539814,
+  0.5462040156082136,
+  0.5448398327336789,
+  0.5456035180319702,
+  0.5446820724055929,
+  0.7028119654697145,
+  16.901035278712083,
+  3.518501297835527,
+  2.351143330444757,
+  21.034967249723344,
+  13.97428701719427,
+  1.008857888902015,
+  0.2370540280658426,
+  0.23393244751419323,
+  0.2335542549387325,
+  0.23785701587294159,
+  0.2387178716020125,
+  0.23896309338478933,
+  0.2367442501942143,
+  0.24139756051418368,
+  0.23730147492163375,
+  0.23518746895946985,
+  0.2728862990738159,
+  0.27268148085260174,
+  0.27221983763129104,
+  0.27278391733303237,
+  0.2670668642867949,
+  0.27390711929417905,
+  0.27149950685450414,
+  0.27663649433871557,
+  0.2716025773073433,
+  0.26963468289938164,
+  0.26921779700126264,
+  0.27098332051995877,
+  0.2692177970012627,
+  0.2709833205199654,
+  0.27324420498077656,
+  0.27144795081198003,
+  0.26963468289938414,
+  0.27344842292469806,
+  0.2706211599676731,
+  0.27062115996767394,
+  0.27124158768321927,
+  0.2702583126483501,
+  0.2738052815820564,
+  0.27309089858303104,
+  0.2722711862995125,
+  0.27134479705516323,
+  0.27015451545770924,
+  0.26859075850728076,
+  0.2734994434282808,
+  0.272937469436221,
+  0.2686954078919575,
+  0.2751755480093129,
+  0.2714479508119845,
+  0.26711961532037093,
+  0.27623458428585235
+ ],
+ "median": [
+  51.81668069267283,
+  1.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  36.80410320918773,
+  81.99884511959037,
+  18.023400477771414,
+  97.51085153170567,
+  131.89866318762145,
+  78.13162648758781,
+  3.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0,
+  0.0
+ ],
+ "calibrators": [
+  {
+   "x": [
+    -3.003507137298584,
+    -2.366211175918579,
+    -2.3636674880981445,
+    -2.258110761642456,
+    -2.257323980331421,
+    -2.077866315841675,
+    -2.077820062637329,
+    -1.8732244968414307,
+    -1.8732097148895264,
+    -1.642534852027893,
+    -1.6424586772918701,
+    -1.5815595388412476,
+    -1.5815247297286987,
+    -1.4721037149429321,
+    -1.4716912508010864,
+    -1.4435179233551025,
+    -1.443025827407837,
+    -1.2745221853256226,
+    -1.2745109796524048,
+    -1.2273720502853394,
+    -1.2271431684494019,
+    -1.0684705972671509,
+    -1.0683748722076416,
+    -0.7723439931869507,
+    -0.7716856598854065,
+    -0.7698830366134644,
+    -0.7684546113014221,
+    -0.642927885055542,
+    -0.642452597618103,
+    -0.6405806541442871,
+    -0.6404895782470703,
+    -0.47611087560653687,
+    -0.47549718618392944,
+    -0.45239347219467163,
+    -0.45043396949768066,
+    -0.4200155735015869,
+    -0.4197952151298523,
+    -0.18895088136196136,
+    -0.1429644376039505,
+    -0.14107352495193481
+   ],
+   "y": [
+    0.0,
+    0.0,
+    0.0833333358168602,
+    0.0833333358168602,
+    0.12359550595283508,
+    0.12359550595283508,
+    0.15176714956760406,
+    0.15176714956760406,
+    0.15842583775520325,
+    0.15842583775520325,
+    0.17836257815361023,
+    0.17836257815361023,
+    0.17880794405937195,
+    0.17880794405937195,
+    0.20382165908813477,
+    0.20382165908813477,
+    0.21893490850925446,
+    0.21893490850925446,
+    0.2291666716337204,
+    0.2291666716337204,
+    0.23055554926395416,
+    0.23055554926395416,
+    0.2377701997756958,
+    0.2377701997756958,
+    0.25,
+    0.25,
+    0.30666667222976685,
+    0.30666667222976685,
+    0.3333333432674408,
+    0.3333333432674408,
+    0.3457943797111511,
+    0.3457943797111511,
+    0.4545454680919647,
+    0.4545454680919647,
+    0.46666666865348816,
+    0.46666666865348816,
+    0.47826087474823,
+    0.47826087474823,
+    0.5,
+    0.5
+   ]
+  },
+  {
+   "x": [
+    -7.139802932739258,
+    -5.831305503845215,
+    -5.830555438995361,
+    -4.891237258911133,
+    -4.89109992980957,
+    -4.208016395568848,
+    -4.207863807678223,
+    -3.3459291458129883
+   ],
+   "y": [
+    0.0,
+    0.0,
+    0.007271172013133764,
+    0.007271172013133764,
+    0.00876897107809782,
+    0.00876897107809782,
+    0.009107467718422413,
+    0.009107467718422413
+   ]
+  },
+  {
+   "x": [
+    -6.558281421661377,
+    -5.713807106018066,
+    -5.69267463684082,
+    -4.902270793914795,
+    -4.899440288543701,
+    -4.455273151397705,
+    -4.454972267150879,
+    -4.400465488433838,
+    -4.400280952453613,
+    -4.257408142089844,
+    -4.256805896759033,
+    -4.2213921546936035,
+    -4.220913410186768,
+    -3.592972755432129,
+    -3.592937469482422,
+    -3.5217952728271484,
+    -3.521657943725586,
+    -3.4800467491149902,
+    -3.4798660278320312,
+    -3.3681981563568115,
+    -3.3678901195526123,
+    -3.2344515323638916,
+    -3.2343878746032715,
+    -2.780874729156494,
+    -2.7800426483154297,
+    -2.4621336460113525,
+    -2.4593665599823,
+    -2.274657726287842,
+    -2.269826889038086,
+    -2.255434989929199,
+    -2.25447416305542,
+    -1.8860766887664795,
+    -1.8799363374710083,
+    -0.8709592819213867
+   ],
+   "y": [
+    0.0,
+    0.0,
+    0.007518797181546688,
+    0.007518797181546688,
+    0.012269938364624977,
+    0.012269938364624977,
+    0.012500000186264515,
+    0.012500000186264515,
+    0.013698630034923553,
+    0.013698630034923553,
+    0.014925372786819935,
+    0.014925372786819935,
+    0.02107279747724533,
+    0.02107279747724533,
+    0.021551724523305893,
+    0.021551724523305893,
+    0.023622047156095505,
+    0.023622047156095505,
+    0.02368421107530594,
+    0.02368421107530594,
+    0.032608695328235626,
+    0.032608695328235626,
+    0.03885804861783981,
+    0.03885804861783981,
+    0.046296294778585434,
+    0.046296294778585434,
+    0.05627705529332161,
+    0.05627705529332161,
+    0.0625,
+    0.0625,
+    0.06722689419984818,
+    0.06722689419984818,
+    0.15454545617103577,
+    0.15454545617103577
+   ]
+  },
+  {
+   "x": [
+    -7.39782190322876,
+    -6.452118873596191,
+    -6.4477338790893555,
+    -4.705381870269775,
+    -4.704945087432861,
+    -4.342345237731934,
+    -4.342095851898193,
+    -3.661632776260376,
+    -3.626330852508545
+   ],
+   "y": [
+    0.0,
+    0.0,
+    0.005265210755169392,
+    0.005265210755169392,
+    0.00834724586457014,
+    0.00834724586457014,
+    0.025316456332802773,
+    0.025316456332802773,
+    1.0
+   ]
+  },
+  {
+   "x": [
+    -10.001096725463867,
+    -8.368276596069336,
+    -8.363959312438965,
+    -6.938687324523926,
+    -6.938652038574219,
+    -6.027495861053467,
+    -6.027247905731201,
+    -5.89863920211792,
+    -5.897925853729248,
+    -4.935426712036133
+   ],
+   "y": [
+    0.0,
+    0.0,
+    0.0007501875516027212,
+    0.0007501875516027212,
+    0.0011045655701309443,
+    0.0011045655701309443,
+    0.005347593687474728,
+    0.005347593687474728,
+    0.00615384615957737,
+    0.00615384615957737
+   ]
+  },
+  {
+   "x": [
+    -7.6059184074401855,
+    -5.718383312225342,
+    -5.717401504516602,
+    -5.576921463012695,
+    -5.575654983520508,
+    -4.676648139953613,
+    -4.676109313964844,
+    -4.647722244262695,
+    -4.647674083709717,
+    -4.119636058807373,
+    -4.113814830780029,
+    -3.646742820739746
+   ],
+   "y": [
+    0.0,
+    0.0,
+    0.0028901733458042145,
+    0.0028901733458042145,
+    0.007279116660356522,
+    0.007279116660356522,
+    0.009708737954497337,
+    0.009708737954497337,
+    0.01425178162753582,
+    0.01425178162753582,
+    0.01587301678955555,
+    0.01587301678955555
+   ]
+  },
+  {
+   "x": [
+    -6.166919708251953,
+    -4.955709934234619,
+    -4.953689098358154,
+    -4.180367469787598,
+    -4.180124282836914,
+    -2.816697120666504,
+    -2.816098928451538,
+    -2.589923620223999,
+    -2.573025941848755,
+    -2.1180615425109863,
+    -2.117338180541992,
+    -1.5898311138153076,
+    -1.585381031036377,
+    -1.539206624031067,
+    -1.5372878313064575,
+    -0.9180123209953308,
+    -0.914112389087677,
+    -0.79001384973526
+   ],
+   "y": [
+    0.0,
+    0.0,
+    0.017450682818889618,
+    0.017450682818889618,
+    0.02231135591864586,
+    0.02231135591864586,
+    0.056603774428367615,
+    0.056603774428367615,
+    0.07216494530439377,
+    0.07216494530439377,
+    0.1055045872926712,
+    0.1055045872926712,
+    0.125,
+    0.125,
+    0.1319444477558136,
+    0.1319444477558136,
+    0.375,
+    0.375
+   ]
+  },
+  {
+   "x": [
+    -6.751887321472168,
+    -5.480620384216309,
+    -5.478211879730225,
+    -5.242400169372559,
+    -5.241377830505371,
+    -5.046220302581787,
+    -5.045567035675049,
+    -4.340636253356934,
+    -4.340372085571289,
+    -4.231177806854248,
+    -4.230804443359375,
+    -3.2421298027038574,
+    -3.2416605949401855,
+    -3.1293461322784424,
+    -3.127815008163452,
+    -2.758490800857544,
+    -2.7558603286743164,
+    -2.5092551708221436,
+    -2.50158953666687,
+    -2.054255723953247,
+    -2.0513956546783447,
+    -1.926133632659912,
+    -1.922359824180603,
+    -1.5653890371322632,
+    -1.543228268623352,
+    -0.7454178929328918,
+    -0.7428442239761353,
+    -0.4541141390800476,
+    -0.4210098385810852,
+    -0.06969012320041656
+   ],
+   "y": [
+    0.0,
+    0.0,
+    0.006493506487458944,
+    0.006493506487458944,
+    0.0078125,
+    0.0078125,
+    0.014103424735367298,
+    0.014103424735367298,
+    0.014836795628070831,
+    0.014836795628070831,
+    0.018018018454313278,
+    0.018018018454313278,
+    0.03703703731298447,
+    0.03703703731298447,
+    0.04373177886009216,
+    0.04373177886009216,
+    0.06481481343507767,
+    0.06481481343507767,
+    0.06666667014360428,
+    0.06666667014360428,
+    0.09090909361839294,
+    0.09090909361839294,
+    0.10091742873191833,
+    0.10091742873191833,
+    0.18400000035762787,
+    0.18400000035762787,
+    0.25,
+    0.25,
+    0.6666666865348816,
+    0.6666666865348816
+   ]
+  },
+  {
+   "x": [
+    -5.861337661743164,
+    -5.027066707611084,
+    -5.026234149932861,
+    -4.702647686004639,
+    -4.701769828796387,
+    -4.549160480499268,
+    -4.548917293548584,
+    -4.2880024909973145,
+    -4.287850856781006,
+    -3.9165055751800537,
+    -3.916459560394287,
+    -3.6883978843688965,
+    -3.6883456707000732,
+    -3.130094051361084,
+    -3.129849672317505,
+    -2.701094388961792,
+    -2.7010529041290283,
+    -2.3438568115234375,
+    -2.341257095336914,
+    -2.018421173095703,
+    -2.0121309757232666,
+    -1.952004313468933,
+    -1.9465943574905396,
+    -1.3451273441314697,
+    -1.3418936729431152,
+    -1.1383455991744995,
+    -1.1259970664978027,
+    -1.0370774269104004,
+    -1.032103419303894,
+    -0.9774914979934692,
+    -0.9698953032493591,
+    -0.4708904027938843
+   ],
+   "y": [
+    0.0,
+    0.0,
+    0.007042253389954567,
+    0.007042253389954567,
+    0.017699114978313446,
+    0.017699114978313446,
+    0.01955990307033062,
+    0.01955990307033062,
+    0.02659069374203682,
+    0.02659069374203682,
+    0.027654867619276047,
+    0.027654867619276047,
+    0.03607723489403725,
+    0.03607723489403725,
+    0.057993728667497635,
+    0.057993728667497635,
+    0.08502024412155151,
+    0.08502024412155151,
+    0.09803921729326248,
+    0.09803921729326248,
+    0.1034482792019844,
+    0.1034482792019844,
+    0.16738197207450867,
+    0.16738197207450867,
+    0.1944444477558136,
+    0.1944444477558136,
+    0.2142857164144516,
+    0.2142857164144516,
+    0.3333333432674408,
+    0.3333333432674408,
+    0.3636363744735718,
+    0.3636363744735718
+   ]
+  }
+ ],
+ "outcomes": [
+  "outcome_hospitalization",
+  "outcome_critical",
+  "outcome_sepsis",
+  "outcome_pneumonia_viral",
+  "outcome_ards",
+  "outcome_pe",
+  "outcome_copd_asthma",
+  "outcome_acs_mi",
+  "outcome_aki"
+ ],
+ "outcome_display": {
+  "outcome_hospitalization": "Hospitalization",
+  "outcome_critical": "Critical illness",
+  "outcome_sepsis": "Sepsis",
+  "outcome_pneumonia_viral": "Viral pneumonia",
+  "outcome_ards": "ARDS",
+  "outcome_pe": "Pulmonary embolism",
+  "outcome_copd_asthma": "COPD / Asthma",
+  "outcome_acs_mi": "ACS / MI",
+  "outcome_aki": "Acute kidney injury"
+ },
+ "reserved": [
+  "outcome_stroke",
+  "outcome_gi_bleed",
+  "outcome_dvt",
+  "outcome_arrhythmia",
+  "outcome_chf_decomp",
+  "outcome_uti",
+  "outcome_dka",
+  "outcome_meningitis",
+  "outcome_appendicitis",
+  "outcome_seizure",
+  "outcome_hypoglycemia"
+ ],
+ "core": [
+  "triage_acuity",
+  "age",
+  "gender",
+  "triage_heartrate",
+  "triage_resprate",
+  "triage_o2sat",
+  "triage_sbp",
+  "triage_dbp",
+  "n_ed_30d",
+  "n_ed_365d",
+  "chiefcom_abdominal_pain",
+  "cci_Pulmonary",
+  "cci_Renal",
+  "eci_FluidsLytes",
+  "eci_HTN1"
+ ],
+ "feature_meta": {
+  "age": {
+   "label": "Age (years)",
+   "type": "numeric",
+   "default": 55,
+   "min": 0,
+   "max": 110,
+   "step": 1,
+   "group": "Demographics"
+  },
+  "gender": {
+   "label": "Gender",
+   "type": "categorical",
+   "default": 0,
+   "choices": [
+    [
+     "Male",
+     0
+    ],
+    [
+     "Female",
+     1
+    ]
+   ],
+   "group": "Demographics"
+  },
+  "triage_temperature": {
+   "label": "Temperature (\u00b0C)",
+   "type": "numeric",
+   "default": 36.8,
+   "min": 32,
+   "max": 43,
+   "step": 0.1,
+   "group": "Vitals"
+  },
+  "triage_heartrate": {
+   "label": "Heart rate (bpm)",
+   "type": "numeric",
+   "default": 80,
+   "min": 20,
+   "max": 220,
+   "step": 1,
+   "group": "Vitals"
+  },
+  "triage_resprate": {
+   "label": "Respiratory rate (/min)",
+   "type": "numeric",
+   "default": 16,
+   "min": 4,
+   "max": 60,
+   "step": 1,
+   "group": "Vitals"
+  },
+  "triage_o2sat": {
+   "label": "SpO\u2082 (%)",
+   "type": "numeric",
+   "default": 98,
+   "min": 50,
+   "max": 100,
+   "step": 1,
+   "group": "Vitals"
+  },
+  "triage_sbp": {
+   "label": "Systolic BP (mmHg)",
+   "type": "numeric",
+   "default": 120,
+   "min": 40,
+   "max": 260,
+   "step": 1,
+   "group": "Vitals"
+  },
+  "triage_dbp": {
+   "label": "Diastolic BP (mmHg)",
+   "type": "numeric",
+   "default": 75,
+   "min": 20,
+   "max": 160,
+   "step": 1,
+   "group": "Vitals"
+  },
+  "triage_acuity": {
+   "label": "Triage acuity (1=most urgent)",
+   "type": "numeric",
+   "default": 3,
+   "min": 1,
+   "max": 5,
+   "step": 1,
+   "group": "Vitals"
+  },
+  "chiefcom_chest_pain": {
+   "label": "Chest pain",
+   "type": "binary",
+   "default": 0,
+   "group": "Chief complaint"
+  },
+  "chiefcom_shortness_of_breath": {
+   "label": "Shortness of breath",
+   "type": "binary",
+   "default": 0,
+   "group": "Chief complaint"
+  },
+  "chiefcom_abdominal_pain": {
+   "label": "Abdominal pain",
+   "type": "binary",
+   "default": 0,
+   "group": "Chief complaint"
+  },
+  "chiefcom_headache": {
+   "label": "Headache",
+   "type": "binary",
+   "default": 0,
+   "group": "Chief complaint"
+  },
+  "chiefcom_back_pain": {
+   "label": "Back pain",
+   "type": "binary",
+   "default": 0,
+   "group": "Chief complaint"
+  },
+  "chiefcom_cough": {
+   "label": "Cough",
+   "type": "binary",
+   "default": 0,
+   "group": "Chief complaint"
+  },
+  "chiefcom_nausea_vomiting": {
+   "label": "Nausea / vomiting",
+   "type": "binary",
+   "default": 0,
+   "group": "Chief complaint"
+  },
+  "chiefcom_fever_chills": {
+   "label": "Fever / chills",
+   "type": "binary",
+   "default": 0,
+   "group": "Chief complaint"
+  },
+  "chiefcom_syncope": {
+   "label": "Syncope",
+   "type": "binary",
+   "default": 0,
+   "group": "Chief complaint"
+  },
+  "chiefcom_dizziness": {
+   "label": "Dizziness",
+   "type": "binary",
+   "default": 0,
+   "group": "Chief complaint"
+  },
+  "cci_MI": {
+   "label": "Hx MI",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_CHF": {
+   "label": "Hx CHF",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_PVD": {
+   "label": "Peripheral vasc. dis.",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_Stroke": {
+   "label": "Hx stroke",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_Dementia": {
+   "label": "Dementia",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_Pulmonary": {
+   "label": "Chronic pulmonary",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_Rheumatic": {
+   "label": "Rheumatic disease",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_PUD": {
+   "label": "Peptic ulcer",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_Liver1": {
+   "label": "Mild liver disease",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_DM1": {
+   "label": "DM, no complication",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_DM2": {
+   "label": "DM with complication",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_Paralysis": {
+   "label": "Hemi/paraplegia",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_Renal": {
+   "label": "Renal disease",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_Cancer1": {
+   "label": "Localised cancer",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_Liver2": {
+   "label": "Severe liver disease",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_Cancer2": {
+   "label": "Metastatic cancer",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "cci_HIV": {
+   "label": "HIV / AIDS",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (CCI)"
+  },
+  "eci_Arrhythmia": {
+   "label": "Arrhythmia",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_Valvular": {
+   "label": "Valvular disease",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_PHTN": {
+   "label": "Pulmonary hypertension",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_HTN1": {
+   "label": "Hypertension (uncomp.)",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_HTN2": {
+   "label": "Hypertension (comp.)",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_NeuroOther": {
+   "label": "Other neurologic",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_Hypothyroid": {
+   "label": "Hypothyroidism",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_Lymphoma": {
+   "label": "Lymphoma",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_Coagulopathy": {
+   "label": "Coagulopathy",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_Obesity": {
+   "label": "Obesity",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_WeightLoss": {
+   "label": "Weight loss",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_FluidsLytes": {
+   "label": "Fluid/electrolyte",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_BloodLoss": {
+   "label": "Blood loss anemia",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_Anemia": {
+   "label": "Deficiency anemia",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_Alcohol": {
+   "label": "Alcohol abuse",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_Drugs": {
+   "label": "Drug abuse",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_Psychoses": {
+   "label": "Psychoses",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "eci_Depression": {
+   "label": "Depression",
+   "type": "binary",
+   "default": 0,
+   "group": "Comorbidities (Elixhauser)"
+  },
+  "n_ed_30d": {
+   "label": "ED visits last 30d",
+   "type": "numeric",
+   "default": 0,
+   "min": 0,
+   "max": 50,
+   "step": 1,
+   "group": "Utilisation"
+  },
+  "n_ed_90d": {
+   "label": "ED visits last 90d",
+   "type": "numeric",
+   "default": 0,
+   "min": 0,
+   "max": 100,
+   "step": 1,
+   "group": "Utilisation"
+  },
+  "n_ed_365d": {
+   "label": "ED visits last 365d",
+   "type": "numeric",
+   "default": 0,
+   "min": 0,
+   "max": 200,
+   "step": 1,
+   "group": "Utilisation"
+  },
+  "n_hosp_30d": {
+   "label": "Hosp. last 30d",
+   "type": "numeric",
+   "default": 0,
+   "min": 0,
+   "max": 30,
+   "step": 1,
+   "group": "Utilisation"
+  },
+  "n_hosp_90d": {
+   "label": "Hosp. last 90d",
+   "type": "numeric",
+   "default": 0,
+   "min": 0,
+   "max": 50,
+   "step": 1,
+   "group": "Utilisation"
+  },
+  "n_hosp_365d": {
+   "label": "Hosp. last 365d",
+   "type": "numeric",
+   "default": 0,
+   "min": 0,
+   "max": 100,
+   "step": 1,
+   "group": "Utilisation"
+  },
+  "n_icu_30d": {
+   "label": "ICU last 30d",
+   "type": "numeric",
+   "default": 0,
+   "min": 0,
+   "max": 10,
+   "step": 1,
+   "group": "Utilisation"
+  },
+  "n_icu_90d": {
+   "label": "ICU last 90d",
+   "type": "numeric",
+   "default": 0,
+   "min": 0,
+   "max": 20,
+   "step": 1,
+   "group": "Utilisation"
+  },
+  "n_icu_365d": {
+   "label": "ICU last 365d",
+   "type": "numeric",
+   "default": 0,
+   "min": 0,
+   "max": 50,
+   "step": 1,
+   "group": "Utilisation"
+  }
+ },
+ "baseline_prevalence": {
+  "outcome_hospitalization": 0.203,
+  "outcome_critical": 0.008,
+  "outcome_sepsis": 0.027,
+  "outcome_pneumonia_viral": 0.006,
+  "outcome_ards": 0.001,
+  "outcome_pe": 0.006,
+  "outcome_copd_asthma": 0.023,
+  "outcome_acs_mi": 0.017,
+  "outcome_aki": 0.037
+ },
+ "default_threshold": 0.5
+}

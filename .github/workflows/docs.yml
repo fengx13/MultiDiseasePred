@@ -1,4 +1,8 @@
-name: Deploy Documentation
+name: Deploy site
+
+# Builds the documentation (MkDocs) together with the static dashboard in
+# docs/dashboard/ and publishes them with GitHub Pages straight from main.
+# No gh-pages branch is needed: set Settings > Pages > Source to "GitHub Actions".
 
 on:
   push:
@@ -7,12 +11,17 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,11 +29,25 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
-      - name: Install documentation dependencies
+      - name: Build documentation and dashboard
         run: |
           pip install mkdocs mkdocs-material
+          mkdocs build
 
-      - name: Deploy documentation to GitHub Pages
-        run: mkdocs gh-deploy --force
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

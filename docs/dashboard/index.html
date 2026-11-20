@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MultiDiseasePred - ED Risk Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%232f5d8a'/%3E%3Cpath d='M7 3h2v4h4v2H9v4H7V9H3V7h4z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--ink:#1f2d3d;--muted:#7a8699;--line:#e6ebf1;--soft:#eef3f9;--accent:#2f5d8a;--side:#f0f2f6;--red:#d64545;--amber:#e3a008;--green:#3f9d5a;--blue:#2f6fb0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181d;--card:#1c2229;--ink:#e4e9ef;--muted:#93a0b0;--line:#2c343d;--soft:#22303e;--accent:#6fa3d6;--side:#1a1f25;--blue:#6fa3d6}}
+:root[data-theme="dark"]{--bg:#14181d;--card:#1c2229;--ink:#e4e9ef;--muted:#93a0b0;--line:#2c343d;--soft:#22303e;--accent:#6fa3d6;--side:#1a1f25;--blue:#6fa3d6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.layout{display:flex;min-height:100vh}
+aside{width:360px;flex:none;background:var(--side);border-right:1px solid var(--line);padding:18px 16px 40px;overflow-y:auto;max-height:100vh;position:sticky;top:0}
+main{flex:1;min-width:0;padding:18px 24px 48px;max-width:1140px}
+h2{font-size:1.15rem;margin:0 0 4px}
+h4{margin:14px 0 4px;font-size:.92rem}
+.cap{color:var(--muted);font-size:.82rem;margin:2px 0 10px}
+.row{display:grid;grid-template-columns:1.15fr 1fr;align-items:center;gap:8px;margin:4px 0}
+.row label.lab{font-size:.86rem;color:var(--ink);opacity:.85;line-height:1.15}
+input[type=number],select{width:100%;padding:5px 8px;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--ink);font:inherit;font-size:.9rem}
+.seg{display:flex;gap:4px}
+.seg label{flex:1;text-align:center;border:1px solid var(--line);border-radius:7px;padding:3px 0;font-size:.84rem;cursor:pointer;background:var(--card)}
+.seg input{display:none}
+.seg label:has(input:checked){border-color:var(--accent);color:var(--accent);font-weight:600;background:var(--soft)}
+details{margin-top:10px;border:1px solid var(--line);border-radius:9px;padding:6px 10px;background:var(--card)}
+summary{cursor:pointer;font-weight:600;font-size:.9rem}
+hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+.outs label{display:flex;gap:6px;align-items:center;font-size:.88rem;margin:2px 0}
+.header{background:linear-gradient(90deg,#2f5d8a 0%,#3f7cab 100%);color:#fff;padding:14px 22px;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,.12);margin-bottom:14px}
+.header h1{font-size:1.3rem;margin:0}
+.info{background:var(--soft);border-radius:10px;padding:9px 14px;font-size:.86rem;margin-bottom:14px}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto;margin-bottom:14px}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:8px 12px;font:inherit;font-size:.9rem;color:var(--muted);cursor:pointer;white-space:nowrap}
+.tabs button.on{color:var(--red);border-bottom-color:var(--red)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid2.w{grid-template-columns:1fr 1.4fr}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;box-shadow:0 1px 4px rgba(20,40,80,.06)}
+.card h3{margin:0 0 10px;font-size:1.02rem;color:var(--accent);text-align:center;background:var(--soft);padding:8px;border-radius:9px}
+.vital{display:flex;gap:10px;padding:4px 0;font-size:1rem}
+.vital b{min-width:150px}
+.up{color:var(--red);font-weight:700}.down{color:var(--blue);font-weight:700}.flat{color:var(--muted)}
+.pid{display:flex;justify-content:space-between;background:var(--soft);border-radius:11px;padding:12px 22px;margin-top:16px;flex-wrap:wrap;gap:10px}
+.pid .l{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}.pid .v{font-weight:700}
+.chip{display:inline-block;padding:4px 11px;margin:4px 6px 4px 0;border-radius:16px;color:var(--muted);border:1px dashed var(--line);font-size:.84rem}
+.metric .l{font-size:.85rem;color:var(--muted)}.metric .v{font-size:1.9rem;font-weight:600}.metric .d{font-size:.8rem;color:var(--green)}
+svg text{fill:var(--ink)}
+.foot{color:var(--muted);font-size:.8rem;margin-top:22px}
+.expl ul{padding-left:20px;margin:6px 0}
+.warn{color:var(--red);font-weight:600}
+@media (max-width:880px){.layout{display:block}aside{width:auto;max-height:none;position:static;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}.grid2,.grid2.w{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside>
+  <h2>Patient inputs</h2>
+  <p class="cap">Pre-filled with the Figure-6 composite case. Edit any value to re-score.</p>
+  <div id="core"></div>
+  <details><summary>Advanced inputs (48 more)</summary>
+    <p class="cap">Optional. Left at default = auto-filled with a typical value.</p>
+    <div id="adv"></div>
+  </details>
+  <hr>
+  <h4>Outcomes to score</h4>
+  <div class="outs" id="outs"></div>
+  <h4>Decision threshold: <span id="thv">0.50</span></h4>
+  <input type="range" id="thr" min="0.05" max="0.95" step="0.05" value="0.5" style="width:100%">
+  <hr>
+  <button id="reset" style="font:inherit;font-size:.85rem;border:1px solid var(--line);border-radius:7px;padding:5px 10px;background:var(--card);color:var(--ink);cursor:pointer">Reset to example case</button>
+</aside>
+<main>
+  <div class="header"><h1>MultiDiseasePred - ED Risk Dashboard</h1><span style="opacity:.9;font-size:.9rem">Early multi-outcome triage risk profiling</span></div>
+  <div class="info"><b>Demonstration.</b> The DSelect-K network runs in your browser; its weights were trained on synthetic data, so the ranking illustrates the method and the absolute probabilities must not be quoted. Nothing you enter leaves this page.</div>
+  <div id="status" class="cap">Loading model…</div>
+  <div class="tabs" id="tabs"></div>
+  <div id="view"></div>
+  <p class="foot">Method: 15 triage-available variables (others set to typical values) → standardised → DSelect-K multi-task model → isotonic calibration → gradient × input attribution. Research / decision-support tool, not a substitute for clinical judgment.</p>
+</main>
+</div>
+<script src="model.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
