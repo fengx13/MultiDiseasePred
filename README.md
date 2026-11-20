@@ -1,5 +1,7 @@
 # MultiDiseasePred
 
+**Live dashboard:** <https://multidiseasepred-dashboard.streamlit.app>
+
 One model for many outcomes that can happen at the same time.
 
 Most clinical risk tools predict one thing. When a patient could plausibly have
